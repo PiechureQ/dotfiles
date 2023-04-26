@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     function fish_greeting
-        neofetch --kitty $HOME/nf400.jpg --disable icons theme wm_theme --colors 4 4 7 5 6 7 --color_blocks off
+        neofetch --kitty $HOME/.config/fish/nf400.jpg --disable icons theme wm_theme --colors 4 4 7 5 6 7 --color_blocks off
         echo 🙏 (fortune -s) 🙏
     end
 
