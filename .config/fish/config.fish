@@ -44,7 +44,7 @@ if status is-interactive
     alias opakitty "kitty -o background_opacity=0.0 --detach"
 
     # open configs with editor
-    alias ek "$EDITOR $HOME/.config/kitty/kitty.conf"
+    alias ek="$EDITOR $HOME/.config/kitty/kitty.conf"
     alias ea="$EDITOR $HOME/.config/awesome/rc.lua"
     alias en="$EDITOR $HOME/.config/nvim/init.lua"
 
@@ -72,5 +72,4 @@ if status is-interactive
     if test -e $HOME/.my.fish
         source $HOME/.my.fish
     end
-
 end
