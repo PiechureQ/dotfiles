@@ -52,3 +52,7 @@ o.textwidth = 120
 o.hlsearch = true
 o.incsearch = true
 
+-- NETRW
+vim.g.netrw_banner = 0
+vim.g.netrw_browse_spit = 2
+vim.g.netrw_liststyle = 3

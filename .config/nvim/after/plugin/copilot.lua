@@ -1,4 +1,4 @@
-require('copilot').setup({
+require("copilot").setup({
   panel = {
     enabled = true,
     auto_refresh = false,
@@ -7,15 +7,15 @@ require('copilot').setup({
       jump_next = "]]",
       accept = "<CR>",
       refresh = "gr",
-      open = "<M-CR>"
+      open = "<M-CR>",
     },
     layout = {
       position = "right", -- | top | left | right
-      ratio = 0.3
+      ratio = 0.3,
     },
   },
   suggestion = {
-    enabled = false,
+    enabled = true,
     auto_trigger = true,
     debounce = 75,
     keymap = {
@@ -38,11 +38,11 @@ require('copilot').setup({
     cvs = false,
     ["."] = false,
   },
-  copilot_node_command = 'node', -- Node.js version must be > 16.x
+  copilot_node_command = "node", -- Node.js version must be > 16.x
   server_opts_overrides = {},
 })
 
-vim.keymap.set('n', '<leader>tc', ':Copilot toggle<CR>', { desc = '[T]oggle [C]opilot' })
-vim.keymap.set('n', '<leader>tp', ':Copilot panel<CR>', { desc = '[T]oggle copilot [P]anel' })
+vim.keymap.set("n", "<leader>tc", ":Copilot toggle<CR>", { desc = "[T]oggle [C]opilot" })
+vim.keymap.set("n", "<leader>tp", ":Copilot panel<CR>", { desc = "[T]oggle copilot [P]anel" })
 
-require("copilot_cmp").setup()
+-- require("copilot_cmp").setup()

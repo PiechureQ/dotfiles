@@ -20,6 +20,13 @@ local on_attach = function(server_name)
       vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
     end
 
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+
     -- Create a command `:Format` local to the LSP buffer
     vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
       vim.lsp.buf.format()
@@ -94,12 +101,6 @@ local on_attach = function(server_name)
 
       nmap("<leader>ai", organize_imports, "Code [A]ction organize [I]mports")
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
     end
   end
 end
