@@ -32,6 +32,13 @@ cmp.setup({
         end
       end,
     }),
+    ['<M-s>'] = cmp.mapping.complete({
+      config = {
+        sources = {
+          { name = 'luasnip' }
+        }
+      }
+    })
   }),
   -- TODO https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
   sources = cmp.config.sources({
