@@ -25,7 +25,7 @@ require("packer").startup(function(use)
       "jay-babu/mason-null-ls.nvim",
 
       -- Useful status updates for LSP
-      "j-hui/fidget.nvim",
+      { "j-hui/fidget.nvim", tag = "legacy" },
 
       -- Additional lua configuration, makes nvim stuff amazing
       "folke/neodev.nvim",
@@ -115,6 +115,11 @@ require("packer").startup(function(use)
   use("mbbill/undotree")
 
   use("folke/which-key.nvim")
+
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
 
   if is_bootstrap then
     require("packer").sync()
