@@ -6,8 +6,9 @@ local _M = {
   -- This is used later as the default terminal and editor to run.
   terminal = "kitty",
   editor = "nvim",
-  browser = "firefox",
-  messages = "slack",
+  browser = "/opt/firefox/firefox",
+  messages = "flatpak run com.slack.Slack",
+  music = "flatpak run com.spotify.Client",
   files = "nautilus",
   email = "thunderbird",
 
