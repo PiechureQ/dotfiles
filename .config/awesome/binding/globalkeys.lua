@@ -229,6 +229,9 @@ function _M.get()
     awful.key({ modkey, altkey    }, "e", function () awful.spawn(RC.vars.email) end,
               {description = "run email client", group = "launcher"}),
 
+    awful.key({ modkey, altkey    }, "p", function () awful.spawn(RC.vars.music) end,
+              {description = "run" .. RC.vars.music, group = "launcher"}),
+
     awful.key({ modkey }, "/", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
   )

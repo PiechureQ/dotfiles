@@ -42,7 +42,7 @@ require("packer").startup(function(use)
 
   use({
     "L3MON4D3/LuaSnip",
-    tag = "v<CurrentMajor>.*",
+    tag = "v1.*",
     requires = {
       "rafamadriz/friendly-snippets",
       "benfowler/telescope-luasnip.nvim",
@@ -118,7 +118,9 @@ require("packer").startup(function(use)
 
   use({
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   })
 
   if is_bootstrap then
