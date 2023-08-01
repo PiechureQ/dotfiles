@@ -4,7 +4,7 @@
 
 local _M = {
   -- This is used later as the default terminal and editor to run.
-  terminal = "kitty",
+  terminal = "/home/michalpraca/.local/kitty.app/bin/kitty",
   editor = "nvim",
   browser = "/opt/firefox/firefox",
   messages = "flatpak run com.slack.Slack",
@@ -19,8 +19,7 @@ local _M = {
   -- theme
   chosen_theme = 'colorless',
 
-  battery_widget = false,
+  battery_widget = true,
 }
 
 return _M
-
