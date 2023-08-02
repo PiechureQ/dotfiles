@@ -1,6 +1,6 @@
 local configs = require("nvim-treesitter.configs")
 configs.setup {
-  ensure_installed = { 'lua', 'python', 'rust', 'typescript', 'tsx', 'vim' },
+  ensure_installed = { 'lua', 'c', 'vim', 'python', 'rust', 'typescript', 'tsx', },
   sync_install = true,
   ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = { enable = true, additional_vim_regex_highlighting = false },

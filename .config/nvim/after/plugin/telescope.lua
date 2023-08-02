@@ -23,7 +23,7 @@ end, "Fuzzily search in current buffer]")
 
 nmap("<leader>ff", builtin.live_grep, "live grep")
 nmap("<leader>fw", builtin.grep_string, "find word under cursor")
-nmap("<leader>fs", builtin.git_status, "git status")
+nmap("<leader>ft", builtin.git_status, "git status")
 
 nmap("<leader>fd", function()
     builtin.grep_string({
@@ -41,6 +41,7 @@ nmap("<leader>fg", builtin.git_branches, "Search branches")
 nmap("<leader>fc", builtin.git_commits, "Search commits")
 nmap("<leader>fj", builtin.jumplist, "Search jump list")
 nmap("<leader>fo", builtin.oldfiles, "Search old files")
+nmap("<leader>fs", builtin.lsp_dynamic_workspace_symbols, "Search workspace symbols")
 
 telescope.setup({
     defaults = {
