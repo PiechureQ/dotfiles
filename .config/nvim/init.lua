@@ -25,7 +25,7 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   -- "tommcdo/vim-fubitive",
-  'lewis6991/gitsigns.nvim',
+  { 'lewis6991/gitsigns.nvim', opts = {} },
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -39,7 +39,7 @@ require('lazy').setup({
   'folke/which-key.nvim',
 
   -- "gc" to comment visual regions/lines
-  'numToStr/Comment.nvim',
+  { 'numToStr/Comment.nvim',   opts = {} },
 
   'mbbill/undotree',
 
@@ -161,7 +161,6 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'p00f/nvim-ts-rainbow',
     },
     build = ':TSUpdate',
   },

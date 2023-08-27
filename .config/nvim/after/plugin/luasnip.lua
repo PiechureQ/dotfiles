@@ -4,12 +4,12 @@ local fmt = require("luasnip.extras.fmt").fmt
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
--- ls.setup({
---   history = true,
---   update_events = { "TextChanged", "TextChangedI" },
---   enable_autosnippets = false,
--- })
---
+ls.setup({
+  history = true,
+  update_events = { "TextChanged", "TextChangedI" },
+  enable_autosnippets = false,
+})
+
 
 ls.add_snippets("typescript", {
   s({ trig = "fn", dscr = "simple function", name = "function" }, {

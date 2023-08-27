@@ -4,7 +4,7 @@ configs.setup {
   modules = {},
   sync_install = true,
   auto_install = true,
-  ignore_install = { },
+  ignore_install = {},
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
@@ -59,10 +59,5 @@ configs.setup {
         ['<leader>A'] = '@parameter.inner',
       },
     },
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-    max_file_lines = nil, -- Do not enable for files with more than n lines, int
   },
 }
