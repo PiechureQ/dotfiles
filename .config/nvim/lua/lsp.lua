@@ -72,6 +72,11 @@ local on_attach = function(server_name)
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, "[W]orkspace [L]ist Folders")
 
+    -- Create a command `:Format` local to the LSP buffer
+    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+      vim.lsp.buf.format()
+    end, { desc = 'Format current buffer with LSP' })
+
     -- typescript specific mapings
     if server_name == "tsserver" then
       vim.keymap.set("n", "<leader>gs", function()
@@ -100,7 +105,6 @@ local on_attach = function(server_name)
       end
 
       nmap("<leader>ai", organize_imports, "Code [A]ction organize [I]mports")
-
     end
   end
 end
@@ -127,19 +131,6 @@ require("neodev").setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- Setup mason so it can manage external tooling
-require("mason").setup()
-require("mason-null-ls").setup({
-  ensure_installed = {
-    eslint_d = {},
-    prettierd = {},
-  },
-  handlers = {},
-  automatic_installation = false,
-  -- automatic_setup = true,
-})
-require("null-ls").setup()
-
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")
 
@@ -153,9 +144,7 @@ mason_lspconfig.setup_handlers({
       capabilities = capabilities,
       on_attach = on_attach(server_name),
       settings = servers[server_name],
+      filetypes = (servers[server_name] or {}).filetypes,
     })
   end,
 })
-
--- Turn on lsp status information
-require("fidget").setup()

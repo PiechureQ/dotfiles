@@ -40,13 +40,11 @@ cmp.setup({
       }
     })
   }),
-  -- TODO https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
+  -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
   sources = cmp.config.sources({
     { name = "luasnip" },
     { name = "nvim_lsp" },
     { name = "nvim_lua" },
-    -- "zbirenbaum/copilot-cmp",
-    -- { name = 'copilot' },
     { name = "emoji" },
     { name = "buffer",  keyword_length = 3 },
     { name = "npm",     keyword_length = 4 },

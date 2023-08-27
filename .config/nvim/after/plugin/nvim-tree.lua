@@ -32,8 +32,6 @@ require("nvim-tree").setup({
     view = {
         side = "right",
         signcolumn = "no",
-        mappings = {
-        }
     },
     actions = {
         open_file = {

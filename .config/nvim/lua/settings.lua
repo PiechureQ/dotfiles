@@ -1,8 +1,4 @@
 local o = vim.o
-local g = vim.g
-
-g.mapleader = ' '
-g.maplocalleader = ' '
 
 -- general
 o.mouse = 'a'
@@ -26,7 +22,6 @@ o.colorcolumn = '+1'
 o.cmdheight = 1
 o.shortmess = 'atOS'
 o.whichwrap = '<,>,h,l'
-o.termguicolors = true
 o.showtabline = 1
 o.helpheight = 20
 
@@ -56,3 +51,5 @@ o.incsearch = true
 vim.g.netrw_banner = 0
 vim.g.netrw_browse_spit = 2
 vim.g.netrw_liststyle = 3
+
+o.termguicolors = true
