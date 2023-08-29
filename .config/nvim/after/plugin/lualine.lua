@@ -2,7 +2,7 @@ local lualine = require('lualine')
 local ll_mode = require('lualine.utils.mode').get_mode
 
 local mode_name = {
-  function ()
+  function()
     return string.lower(ll_mode()) .. ' '
   end,
 }
@@ -83,7 +83,7 @@ local tabs = {
     local ext = string.match(name, "%.([^.]+)$")
     local icon = ''
     if ext then
-      icon = require'nvim-web-devicons'.get_icon(name, ext)
+      icon = require 'nvim-web-devicons'.get_icon(name, ext)
       if not icon then icon = '' end
     end
 
@@ -133,7 +133,7 @@ local config = {
   sections = {
     lualine_a = {},
     lualine_b = { filename, filetype, mode_name },
-    lualine_c = { 'diff', diagnostics, lsp_server },
+    lualine_c = { 'diff', diagnostics },
     lualine_x = { 'searchcount', 'location', 'progress' },
     lualine_y = {},
     lualine_z = {},
@@ -148,4 +148,3 @@ local config = {
   },
 }
 lualine.setup(config)
-

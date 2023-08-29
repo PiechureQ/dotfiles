@@ -22,7 +22,7 @@ o.colorcolumn = '+1'
 o.cmdheight = 1
 o.shortmess = 'atOS'
 o.whichwrap = '<,>,h,l'
-o.showtabline = 1
+o.showtabline = 2
 o.helpheight = 20
 
 -- tabs and indent

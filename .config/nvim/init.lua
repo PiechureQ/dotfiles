@@ -107,11 +107,21 @@ require('lazy').setup({
   },
 
   {
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    dependencies = {
+      -- Adds a number of user-friendly snippets
+      'rafamadriz/friendly-snippets',
+    }
+  },
+
+  {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
 
       "benfowler/telescope-luasnip.nvim",
@@ -125,8 +135,6 @@ require('lazy').setup({
       "David-Kunz/cmp-npm",
       "hrsh7th/cmp-emoji",
 
-      -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
     },
   },
 
