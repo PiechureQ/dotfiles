@@ -2,38 +2,36 @@ local ls = require("luasnip")
 local s, i, c, t = ls.s, ls.insert_node, ls.choice_node, ls.text_node
 local fmt = require("luasnip.extras.fmt").fmt
 
-require("luasnip.loaders.from_vscode").lazy_load()
-
 ls.setup({
   history = true,
   update_events = { "TextChanged", "TextChangedI" },
   enable_autosnippets = false,
 })
 
--- ls.add_snippets("typescript", {
---   s({ trig = "fn", dscr = "simple function", name = "function" }, {
---     t("function "),
---     i(1),
---     t("("),
---     i(2),
---     t(": "),
---     i(3),
---     t(")"),
---     t({ " {", "  " }),
---     i(4),
---     t({ "", "}" }),
---   }),
---   s("cl", fmt([[console.log({})]], { i(1) })),
---   s("tsi", fmt([[// @ts-ignore: {}]], { i(1) })),
---   s("TODO", fmt([[// {}: {}]], { c(1, { t("TODO"), t("FIX") }), i(2) })),
--- })
---
--- ls.add_snippets("typescriptreact", {
---   s("cl", fmt([[console.log({})]], { i(1) })),
---   s("tsi", fmt([[// @ts-ignore: {}]], { i(1) })),
---   s("TODO", fmt([[// {}: {}]], { c(1, { t("TODO"), t("FIX") }), i(2) })),
--- })
---
+ls.add_snippets("typescript", {
+  s({ trig = "fn", dscr = "simple function", name = "function" }, {
+    t("function "),
+    i(1),
+    t("("),
+    i(2),
+    t(": "),
+    i(3),
+    t(")"),
+    t({ " {", "  " }),
+    i(4),
+    t({ "", "}" }),
+  }),
+  s("cl", fmt([[console.log({})]], { i(1) })),
+  s("tsi", fmt([[// @ts-ignore: {}]], { i(1) })),
+  s("TODO", fmt([[// {}: {}]], { c(1, { t("TODO"), t("FIX") }), i(2) })),
+})
+
+ls.add_snippets("typescriptreact", {
+  s("cl", fmt([[console.log({})]], { i(1) })),
+  s("tsi", fmt([[// @ts-ignore: {}]], { i(1) })),
+  s("TODO", fmt([[// {}: {}]], { c(1, { t("TODO"), t("FIX") }), i(2) })),
+})
+
 vim.keymap.set({ "i", "s" }, "<C-j>", function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
@@ -63,3 +61,5 @@ vim.keymap.set("n", "\\s", function()
   vim.cmd.source("~/.config/nvim/after/plugin/luasnip.lua")
 end, { silent = true, desc = "source luasnip.lua" })
 vim.keymap.set("n", "\\fs", "<cmd>Telescope luasnip<CR>", { silent = true, desc = "find snippets" })
+
+require("luasnip.loaders.from_vscode").lazy_load()

@@ -18,6 +18,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("settings")
+require("keybinds")
+require("commands")
+require("autocmd")
+
 require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -30,7 +35,23 @@ require('lazy').setup({
 
   'fladson/vim-kitty',
 
-  'norcalli/nvim-colorizer.lua',
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup({ '*' }, {
+        RGB      = true,         -- #RGB hex codes
+        RRGGBB   = true,         -- #RRGGBB hex codes
+        names    = true,         -- "Name" codes like Blue
+        RRGGBBAA = true,         -- #RRGGBBAA hex codes
+        rgb_fn   = false,        -- CSS rgb() and rgba() functions
+        hsl_fn   = false,        -- CSS hsl() and hsla() functions
+        css      = false,        -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn   = false,        -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        -- Available modes: foreground, background
+        mode     = 'background', -- Set the display mode.
+      })
+    end,
+  },
 
   'nvim-lualine/lualine.nvim',
 
@@ -46,11 +67,14 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
-      char = "▏",
-      show_trailing_blankline_indent = false,
+      debounce = 200,
+      indent = { char = "▏" },
+      whitespace = { highlight = { "Whitespace", "NonText" } },
+      -- scope = { exclude = { language = { "lua" } } },
     },
   },
 
@@ -91,7 +115,7 @@ require('lazy').setup({
     build = "make install_jsregexp",
     dependencies = {
       -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets'
+      { 'rafamadriz/friendly-snippets' },
     },
 
   },
@@ -171,13 +195,13 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
 }, {})
 
-require("settings")
-require("keybinds")
-require("commands")
-require("autocmd")
 require("lsp")
 
-vim.keymap.set('n', '<leader>gg', vim.cmd.Git, { desc = 'use :Git plugin' })
+vim.keymap.set('n', '<leader>gg', function()
+    vim.cmd.Git()
+    vim.cmd.call('feedkeys("\\<C-w>L")')
+  end,
+  { desc = 'use :Git plugin' })
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 

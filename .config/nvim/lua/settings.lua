@@ -28,7 +28,7 @@ o.helpheight = 20
 -- tabs and indent
 o.tabstop = 4
 o.expandtab = true
-o.shiftwidth = 4
+o.shiftwidth = 2
 o.autoindent = true
 o.smartindent = true
 

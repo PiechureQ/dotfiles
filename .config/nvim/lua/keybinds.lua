@@ -1,7 +1,7 @@
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set("n", "Q", "<Nop>", { silent = true })
-vim.keymap.set("n", "q", "<Nop>", { silent = true })
+-- vim.keymap.set("n", "Q", "<Nop>", { silent = true })
+-- vim.keymap.set("n", "q", "<Nop>", { silent = true })
 vim.keymap.set({ "n", "v" }, "J", "<Nop>", { silent = true })
 
 -- so current file

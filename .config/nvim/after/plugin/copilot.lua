@@ -1,4 +1,4 @@
-local copilot_enabled = false
+local copilot_enabled = true
 
 if copilot_enabled then
   require("copilot").setup({
