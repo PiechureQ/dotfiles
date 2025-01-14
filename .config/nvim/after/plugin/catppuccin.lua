@@ -14,7 +14,7 @@ require("catppuccin").setup({
         percentage = 0.15,
     },
     no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
+    no_bold = false,   -- Force no bold
     styles = {
         comments = { "italic" },
         conditionals = { "italic" },
@@ -43,5 +43,6 @@ require("catppuccin").setup({
     },
 })
 
--- setup must be called before loading
-vim.cmd.colorscheme("catppuccin")
+if not vim.g.neovide then
+    vim.cmd.colorscheme 'catppuccin'
+end

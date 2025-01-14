@@ -22,6 +22,7 @@ require("settings")
 require("keybinds")
 require("commands")
 require("autocmd")
+require("neovide")
 
 require('lazy').setup({
   -- Git related plugins
@@ -32,8 +33,6 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
-  'fladson/vim-kitty',
 
   {
     'norcalli/nvim-colorizer.lua',
@@ -110,14 +109,13 @@ require('lazy').setup({
   {
     "L3MON4D3/LuaSnip",
     -- follow latest release.
-    version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     dependencies = {
       -- Adds a number of user-friendly snippets
       { 'rafamadriz/friendly-snippets' },
     },
-
   },
 
   {
@@ -186,13 +184,9 @@ require('lazy').setup({
     build = function()
       vim.fn["mkdp#util#install"]()
     end,
-  }
+  },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+  'fladson/vim-kitty',
 }, {})
 
 require("lsp")
