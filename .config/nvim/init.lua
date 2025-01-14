@@ -25,14 +25,15 @@ require("autocmd")
 require("neovide")
 
 require('lazy').setup({
+
   -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  -- "tommcdo/vim-fubitive",
   { 'lewis6991/gitsigns.nvim', opts = {} },
+  'tpope/vim-fugitive',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  { 'echasnovski/mini.nvim',   version = '*', },
 
   {
     'norcalli/nvim-colorizer.lua',
@@ -56,10 +57,7 @@ require('lazy').setup({
 
   'folke/which-key.nvim',
 
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',   opts = {} },
-
-  'mbbill/undotree',
+  { 'numToStr/Comment.nvim', opts = {} },
 
   'zbirenbaum/copilot.lua',
 
@@ -99,10 +97,46 @@ require('lazy').setup({
         }
       },
 
-      "folke/trouble.nvim",
-
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
+    },
+  },
+
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<C-p>",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>dp",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>ds",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>dy",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>dl",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>dq",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
     },
   },
 
@@ -179,6 +213,25 @@ require('lazy').setup({
       "nvim-tree/nvim-web-devicons" },
   },
 
+  -- yank animations
+  {
+    "rachartier/tiny-glimmer.nvim",
+    event = "TextYankPost",
+    opts = {
+      transparency_color = nil,
+      default_animation = "left_to_right",
+      animations = {
+        left_to_right = {
+          max_duration = 500,
+          chars_for_max_duration = 100,
+          ligering_time = 200,
+          from_color = "DiffText",
+          to_color = "DiffChange",
+        },
+      }
+    },
+  },
+
   {
     'iamcco/markdown-preview.nvim',
     build = function()
@@ -196,7 +249,5 @@ vim.keymap.set('n', '<leader>gg', function()
     vim.cmd.call('feedkeys("\\<C-w>L")')
   end,
   { desc = 'use :Git plugin' })
-
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- vim: ts=2 sts=2 sw=2 et

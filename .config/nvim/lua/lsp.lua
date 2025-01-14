@@ -60,8 +60,8 @@ local on_attach = function(server_name)
     nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 
     -- Diagnostic keymaps
-    nmap("[d", vim.diagnostic.goto_prev, "Diagnostics previous item")
-    nmap("]d", vim.diagnostic.goto_next, "Diagnostics next item")
+    -- nmap("[d", vim.diagnostic.goto_prev, "Diagnostics previous item")
+    -- nmap("]d", vim.diagnostic.goto_next, "Diagnostics next item")
     nmap("<leader>e", vim.diagnostic.open_float, "Open error floating window")
 
     nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
@@ -78,7 +78,7 @@ local on_attach = function(server_name)
     end, { desc = 'Format current buffer with LSP' })
 
     -- typescript specific mapings
-    if server_name == "tsserver" then
+    if server_name == "ts_ls" then
       vim.keymap.set("n", "<leader>gs", function()
         local fname = vim.fn.expand("%")
         if string.find(fname, "tsx") then
