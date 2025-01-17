@@ -6,5 +6,6 @@ require('mini.visits').setup()
 require('mini.cursorword').setup { delay = 1000 }
 require('mini.icons').setup()
 require('mini.trailspace').setup()
-require('mini.surround').setup()
 require('mini.splitjoin').setup()
+require('mini.pairs').setup()
+require('mini.surround').setup()

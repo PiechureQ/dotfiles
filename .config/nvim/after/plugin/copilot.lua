@@ -3,7 +3,8 @@ local copilot_enabled = true
 if copilot_enabled then
   require("copilot").setup({
     panel = {
-      enabled = true,
+      -- disabled for use with cmp integration
+      enabled = false,
       auto_refresh = false,
       keymap = {
         jump_prev = "[[",
@@ -18,7 +19,8 @@ if copilot_enabled then
       },
     },
     suggestion = {
-      enabled = true,
+      -- disabled for use with cmp integration
+      enabled = false,
       auto_trigger = true,
       debounce = 75,
       keymap = {

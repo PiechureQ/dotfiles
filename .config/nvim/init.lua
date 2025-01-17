@@ -23,6 +23,7 @@ require("keybinds")
 require("commands")
 require("autocmd")
 require("neovide")
+require("terminal")
 
 require('lazy').setup({
 
@@ -58,8 +59,6 @@ require('lazy').setup({
   'folke/which-key.nvim',
 
   { 'numToStr/Comment.nvim', opts = {} },
-
-  'zbirenbaum/copilot.lua',
 
   {
     -- Add indentation guides even on blank lines
@@ -169,6 +168,15 @@ require('lazy').setup({
       "David-Kunz/cmp-npm",
       "hrsh7th/cmp-emoji",
 
+      -- Add copilot integration
+      "zbirenbaum/copilot.lua",
+      {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+          require("copilot_cmp").setup()
+        end
+      }
+
     },
   },
 
@@ -219,12 +227,20 @@ require('lazy').setup({
     event = "TextYankPost",
     opts = {
       transparency_color = nil,
-      default_animation = "left_to_right",
+      default_animation = "pulse",
       animations = {
         left_to_right = {
           max_duration = 500,
           chars_for_max_duration = 100,
           ligering_time = 200,
+          from_color = "DiffText",
+          to_color = "DiffChange",
+        },
+        pulse = {
+          max_duration = 400,
+          chars_for_max_duration = 15,
+          pulse_count = 2,
+          intensity = 1.2,
           from_color = "DiffText",
           to_color = "DiffChange",
         },

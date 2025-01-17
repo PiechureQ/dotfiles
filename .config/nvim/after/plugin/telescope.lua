@@ -82,6 +82,22 @@ telescope.setup({
         grep_string = {
             layout_strategy = "cursor",
         },
+        lsp_definitions = {
+            layout_strategy = "cursor",
+            jump_type = "vsplit",
+            mappings = {
+                i = {
+                    ["<CR>"] = "file_vsplit",
+                },
+                n = {
+                    ["<CR>"] = "file_vsplit",
+                },
+            },
+        },
+        lsp_references = {
+            include_declaration = false,
+            include_current_line = true,
+        },
     },
     extensions = {
         fzy_native = {

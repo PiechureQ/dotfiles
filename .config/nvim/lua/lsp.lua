@@ -1,4 +1,5 @@
 local _border = "rounded"
+local telescope = require("telescope.builtin")
 
 vim.diagnostic.config({ float = { border = _border } })
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -46,25 +47,21 @@ local on_attach = function(server_name)
       vim.lsp.buf.signature_help()
     end, "Signature Documentation")
 
-    nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-    nmap("gr", function()
-      require("telescope.builtin").lsp_references({
-        include_declaration = false,
-        include_current_line = true,
-      })
-    end, "[G]oto [R]eferences")
+    -- go to lsp items
+    nmap("gd", telescope.lsp_definitions, "[G]oto [D]efinition")
+    nmap("gr", telescope.lsp_references, "[G]oto [R]eferences")
     nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
     nmap("gy", vim.lsp.buf.type_definition, "Type [D]efinition")
     nmap("gs", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-    nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+    nmap("<leader>ds", telescope.lsp_document_symbols, "[D]ocument [S]ymbols")
 
     -- Diagnostic keymaps
     -- nmap("[d", vim.diagnostic.goto_prev, "Diagnostics previous item")
     -- nmap("]d", vim.diagnostic.goto_next, "Diagnostics next item")
     nmap("<leader>e", vim.diagnostic.open_float, "Open error floating window")
 
-    nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    nmap("<leader>ws", telescope.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
     nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
     nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
@@ -79,12 +76,12 @@ local on_attach = function(server_name)
 
     -- typescript specific mapings
     if server_name == "ts_ls" then
-      vim.keymap.set("n", "<leader>gs", function()
-        local fname = vim.fn.expand("%")
-        if string.find(fname, "tsx") then
-          vim.cmd("e " .. string.gsub(fname, "tsx", "scss"))
-        end
-      end, { desc = "[G]oto [S]tyle source" })
+      -- vim.keymap.set("n", "<leader>gs", function()
+      --   local fname = vim.fn.expand("%")
+      --   if string.find(fname, "tsx") then
+      --     vim.cmd("e " .. string.gsub(fname, "tsx", "scss"))
+      --   end
+      -- end, { desc = "[G]oto [S]tyle source" })
 
       local function organize_imports()
         -- gets the current bufnr if no bufnr is passed

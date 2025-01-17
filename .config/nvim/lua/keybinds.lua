@@ -59,8 +59,8 @@ vim.keymap.set("", "<C-w>M", "<C-w>|", { desc = "Max out the width" })
 vim.keymap.set("", "<C-w>m", "<C-w>_", { desc = "Max out the height" })
 
 -- move between tabs
-vim.keymap.set("", "[t", "Open previous tab", {})
-vim.keymap.set("", "]t", "Open next tab", {})
+vim.keymap.set("", "[t", "gT", { desc = "Open previous tab" })
+vim.keymap.set("", "]t", "gt", { desc = "Open next tab" })
 
 vim.keymap.set("n", "<leader>tn", ":tabnew<cr>", { desc = "Open new tab" })
 vim.keymap.set("n", "<leader>to", ":tabonly<cr>", { desc = "Close other tabs" })
