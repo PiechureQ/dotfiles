@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<leader>tt', ':vsplit<cr>:term<cr>', { desc = 'toggle terminal' })
-vim.keymap.set('t', '<leader>tt', '<C-\\><C-n><C-w>q', { desc = 'escape terminal' })
+local opts = {}
 
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'escape terminal' })
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], opts)
+vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)

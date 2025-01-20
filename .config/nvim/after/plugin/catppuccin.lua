@@ -43,6 +43,6 @@ require("catppuccin").setup({
     },
 })
 
-if not vim.g.neovide then
-    vim.cmd.colorscheme 'catppuccin'
-end
+-- if not vim.g.neovide then
+--     vim.cmd.colorscheme 'catppuccin'
+-- end

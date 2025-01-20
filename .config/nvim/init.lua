@@ -58,7 +58,7 @@ require('lazy').setup({
 
   'folke/which-key.nvim',
 
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',   opts = {} },
 
   {
     -- Add indentation guides even on blank lines
@@ -88,10 +88,10 @@ require('lazy').setup({
       -- Useful status updates for LSP
       {
         'j-hui/fidget.nvim',
-        tag = 'legacy',
+        tag = 'v1.5.0',
         opts = {
           window = {
-            blend = 0,
+            winblend = 100,
           },
         }
       },
@@ -247,6 +247,8 @@ require('lazy').setup({
       }
     },
   },
+
+  { 'akinsho/toggleterm.nvim', version = "*" },
 
   {
     'iamcco/markdown-preview.nvim',

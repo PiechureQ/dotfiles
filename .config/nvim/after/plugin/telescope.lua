@@ -79,6 +79,9 @@ telescope.setup({
         },
     },
     pickers = {
+        oldfiles = {
+            cwd_only = true,
+        },
         grep_string = {
             layout_strategy = "cursor",
         },

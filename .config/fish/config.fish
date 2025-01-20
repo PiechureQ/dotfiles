@@ -59,6 +59,8 @@ if status is-interactive
         nvim $argv
     end
 
+    abbr -a nvi neovide
+
     set -U EDITOR nv
 
     alias config 'git --git-dir=$HOME/.myconfig/ --work-tree=$HOME/'
