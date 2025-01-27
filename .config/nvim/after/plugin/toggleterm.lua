@@ -7,7 +7,7 @@ require("toggleterm").setup {
   --   end
   -- end,
   direction = "float",
-  open_mapping = [[<C-,>]],
+  open_mapping = [[<C-8>]],
   insert_mappings = false, -- whether or not the open mapping applies in insert mode
   start_in_insert = true,
   persist_mode = false,

@@ -90,8 +90,15 @@ require('lazy').setup({
         'j-hui/fidget.nvim',
         tag = 'v1.5.0',
         opts = {
-          window = {
-            winblend = 100,
+          -- Options related to notification subsystem
+          notification = {
+            override_vim_notify = true, -- Automatically override vim.notify() with Fidget
+            window = {
+              -- normal_hl = "NormalFloat", -- Base highlight group in the notification window
+              winblend = 80,   -- Background color opacity in the notification window
+              border = "none", -- Border around the notification window
+              zindex = 45,     -- Stacking priority of the notification window
+            },
           },
         }
       },
@@ -188,9 +195,9 @@ require('lazy').setup({
   {
     "catppuccin/nvim",
     as = "catppuccin",
-    config = function()
-      vim.cmd.colorscheme 'catppuccin'
-    end,
+    -- config = function()
+    --   vim.cmd.colorscheme 'catppuccin'
+    -- end,
   },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -226,7 +233,7 @@ require('lazy').setup({
     "rachartier/tiny-glimmer.nvim",
     event = "TextYankPost",
     opts = {
-      transparency_color = nil,
+      -- transparency_color = nil,
       default_animation = "pulse",
       animations = {
         left_to_right = {
