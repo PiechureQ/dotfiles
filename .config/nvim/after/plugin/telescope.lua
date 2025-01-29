@@ -5,7 +5,7 @@ local frecency = require("frecency")
 frecency.setup {
     hide_current_buffer = true,
     preceding = 'opened',
-    show_unindexed = false,
+    show_unindexed = true,
 }
 
 local default_layout_strategy = "horizontal"
@@ -21,7 +21,11 @@ end
 -- most important
 nmap("<leader><leader>", builtin.resume, "Resume telescope")
 nmap("<leader>fp", builtin.diagnostics, "Search diagnostics")
-nmap("<leader>fi", builtin.find_files, "Find files")
+nmap("<leader>fn", builtin.find_files, "Find files")
+nmap("<leader>fo", builtin.oldfiles, "Find recently opened files")
+nmap("<leader>fi", function()
+    vim.cmd [[Telescope frecency default_text=:CWD:]]
+end, "Find files")
 nmap("<leader>fI", function()
     builtin.find_files({ cwd = vim.fn.expand('%:h') })
 end, "Find files (in current buf path)")
@@ -50,10 +54,6 @@ nmap("<leader>fh", builtin.help_tags, "Search tags")
 nmap("<leader>fg", builtin.git_branches, "Search branches")
 nmap("<leader>fc", builtin.git_commits, "Search commits")
 nmap("<leader>fj", builtin.jumplist, "Search jump list")
-nmap("<leader>fO", frecency.start, "Search old files")
-nmap("<leader>fo", function()
-    vim.cmd [[Telescope frecency default_text=:CWD:]]
-end, "Search old files (CWD)")
 nmap("<leader>fs", builtin.lsp_dynamic_workspace_symbols, "Search workspace symbols")
 
 telescope.setup({

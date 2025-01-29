@@ -80,12 +80,12 @@ local tabs = {
     local bufnr = buflist[winnr]
     local mod = vim.fn.getbufvar(bufnr, '&mod')
     -- get icon
-    local ext = string.match(name, "%.([^.]+)$")
+    -- local ext = string.match(name, "%.([^.]+)$")
     local icon = ''
-    if ext then
-      icon = require 'nvim-web-devicons'.get_icon(name, ext)
-      if not icon then icon = '' end
-    end
+    -- if ext then
+    --   icon = require 'nvim-web-devicons'.get_icon(name, ext)
+    --   if not icon then icon = '' end
+    -- end
 
     return name .. (mod == 1 and ' ~' or '') .. ' ' .. icon
   end

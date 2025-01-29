@@ -11,8 +11,7 @@ require('mini.jump2d').setup();
 
 -- functional
 require('mini.files').setup()
-
-require('mini.notify').setup();
+-- require('mini.notify').setup();
 
 -- visual
 require('mini.cursorword').setup { delay = 1000 }
