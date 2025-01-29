@@ -42,14 +42,14 @@ cmp.setup({
   }),
   -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
   sources = cmp.config.sources({
-    { name = "nvim_lsp", group_index = 5 },
-    { name = "nvim_lua", group_index = 5 },
+    { name = "nvim_lsp", priority = 200,    group_index = 5 },
+    { name = "nvim_lua", priority = 200,    group_index = 5 },
     { name = "luasnip",  group_index = 4 },
     { name = "emoji" },
     { name = "buffer",   keyword_length = 3 },
     { name = "npm",      keyword_length = 4 },
 
-    { name = "copilot",  group_index = 3 },
+    { name = "copilot",  priority = 100,    group_index = 3 },
   }),
   experimental = {
     -- ghost_text = true,
