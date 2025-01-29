@@ -13,11 +13,11 @@ local function on_attach(bufnr)
     api.config.mappings.default_on_attach(bufnr)
 
     -- remove a default
-    vim.keymap.del('n', '-', { buffer = bufnr })
-    vim.keymap.del('n', 's', { buffer = bufnr })
+    -- vim.keymap.del('n', '-', { buffer = bufnr })
+    -- vim.keymap.del('n', 's', { buffer = bufnr })
 
     -- add your mappings
-    vim.keymap.set('n', '-', api.node.navigate.parent_close, opts('Close Directory'))
+    -- vim.keymap.set('n', '-', api.node.navigate.parent_close, opts('Close Directory'))
     vim.keymap.set('n', '{', api.tree.change_root_to_parent, opts('CD to Parent'))
     vim.keymap.set('n', '}', api.tree.change_root_to_node, opts('CD to Node'))
     vim.keymap.set('n', '<C-[>', api.tree.close, opts('Close Tree'))
@@ -52,4 +52,4 @@ require("nvim-tree").setup({
 
 vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle NvimTree" })
 
-vim.keymap.set("n", "-", ":NvimTreeFindFile!<CR>", { silent = true, desc = "Open active file in NvimTree" })
+-- vim.keymap.set("n", "-", ":NvimTreeFindFile!<CR>", { silent = true, desc = "Open active file in NvimTree" })

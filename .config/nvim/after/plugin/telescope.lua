@@ -1,7 +1,14 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local frecency = require("frecency")
 
-local default_layout_strategy = "vertical"
+frecency.setup {
+    hide_current_buffer = true,
+    preceding = 'opened',
+    show_unindexed = false,
+}
+
+local default_layout_strategy = "horizontal"
 local dropdown_theme = require("telescope.themes").get_dropdown({
     prompt_position = "top",
     previewer = false,
@@ -15,6 +22,9 @@ end
 nmap("<leader><leader>", builtin.resume, "Resume telescope")
 nmap("<leader>fp", builtin.diagnostics, "Search diagnostics")
 nmap("<leader>fi", builtin.find_files, "Find files")
+nmap("<leader>fI", function()
+    builtin.find_files({ cwd = vim.fn.expand('%:h') })
+end, "Find files (in current buf path)")
 
 nmap("<leader>?", builtin.oldfiles, "Find recently opened files")
 nmap("<leader>/", function()
@@ -40,7 +50,10 @@ nmap("<leader>fh", builtin.help_tags, "Search tags")
 nmap("<leader>fg", builtin.git_branches, "Search branches")
 nmap("<leader>fc", builtin.git_commits, "Search commits")
 nmap("<leader>fj", builtin.jumplist, "Search jump list")
-nmap("<leader>fo", builtin.oldfiles, "Search old files")
+nmap("<leader>fO", frecency.start, "Search old files")
+nmap("<leader>fo", function()
+    vim.cmd [[Telescope frecency default_text=:CWD:]]
+end, "Search old files (CWD)")
 nmap("<leader>fs", builtin.lsp_dynamic_workspace_symbols, "Search workspace symbols")
 
 telescope.setup({
@@ -49,6 +62,9 @@ telescope.setup({
         layout_config = {
             center = {
                 prompt_position = "top",
+            },
+            horizontal = {
+                preview_width = .66,
             },
             vertical = {
                 height = 0.95,
@@ -113,3 +129,4 @@ telescope.setup({
 telescope.load_extension("fzy_native")
 telescope.load_extension("emoji")
 telescope.load_extension("luasnip")
+telescope.load_extension("frecency")

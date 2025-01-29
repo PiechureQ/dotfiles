@@ -86,22 +86,22 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      {
-        'j-hui/fidget.nvim',
-        tag = 'v1.5.0',
-        opts = {
-          -- Options related to notification subsystem
-          notification = {
-            override_vim_notify = true, -- Automatically override vim.notify() with Fidget
-            window = {
-              -- normal_hl = "NormalFloat", -- Base highlight group in the notification window
-              winblend = 80,   -- Background color opacity in the notification window
-              border = "none", -- Border around the notification window
-              zindex = 45,     -- Stacking priority of the notification window
-            },
-          },
-        }
-      },
+      -- {
+      --   'j-hui/fidget.nvim',
+      --   tag = 'v1.5.0',
+      --   opts = {
+      --     -- Options related to notification subsystem
+      --     notification = {
+      --       override_vim_notify = true, -- Automatically override vim.notify() with Fidget
+      --       window = {
+      --         -- normal_hl = "NormalFloat", -- Base highlight group in the notification window
+      --         winblend = 80,   -- Background color opacity in the notification window
+      --         border = "none", -- Border around the notification window
+      --         zindex = 45,     -- Stacking priority of the notification window
+      --       },
+      --     },
+      --   }
+      -- },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -210,6 +210,11 @@ require('lazy').setup({
         "nvim-telescope/telescope-fzy-native.nvim",
         "xiyaowong/telescope-emoji.nvim",
       },
+      {
+        "nvim-telescope/telescope-frecency.nvim",
+        -- install the latest stable version
+        version = "*",
+      }
     },
   },
 
@@ -258,10 +263,10 @@ require('lazy').setup({
   { 'akinsho/toggleterm.nvim', version = "*" },
 
   {
-    'iamcco/markdown-preview.nvim',
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
 
   'fladson/vim-kitty',
