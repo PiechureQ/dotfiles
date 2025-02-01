@@ -1,8 +1,0 @@
-#!/bin/fish
-set -l CONFIG_REPO $HOME/.myconfig
-echo "git --git-dir=$CONFIG_REPO --work-tree=$HOME"
-alias config "git --git-dir=$CONFIG_REPO --work-tree=$HOME"
-git clone --bare git@github.com:PiechureQ/dotfiles.git $CONFIG_REPO
-cd $HOME
-config checkout
-config config --local status.showUntrackedFiles no
