@@ -1,26 +1,26 @@
 transparent = require("transparent")
 
 my_favs = {
+  "base16-embers",
   -- cool pink/pastel
-  "base2tone_motel_dark",
   "base2tone_cave_dark",
+  -- night mode
+  "base16-mountain",
+  "base16-embers",
+  "base16-rose-pine-moon",
+  "base2tone_pool_dark",
+  "base2tone_motel_dark",
   -- cool night
   "base16-black-metal",
   -- hm
   "base16-tokyodark",
-  "base16-rose-pine-moon",
-  "base2tone_pool_dark",
   "base16-qualia",
   -- nah
   -- "base16-kanagawa",
   -- strong contrast
   "base16-tokyo-night-dark",
-  -- night mode
-  "base16-mountain",
   -- "base16-chalk",
   -- "base2tone_desert_dark",
-  -- night mode
-  "base16-embers",
   -- interesing 🧙
   "base16-uwunicorn",
   "base16-stella",

@@ -61,6 +61,6 @@ map kitty_mod+d scroll_page_down
 
 
 # BEGIN_KITTY_THEME
-# Base2Tone Desert Dark
+# Parasio Dark
 include current-theme.conf
 # END_KITTY_THEME
