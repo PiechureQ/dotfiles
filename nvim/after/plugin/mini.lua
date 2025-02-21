@@ -7,11 +7,13 @@ require('mini.bracketed').setup {
     treesitter = { suffix = 'r', options = {} },
     undo = { suffix = '', options = {} },
 }
-require('mini.jump2d').setup();
+require('mini.jump2d').setup { mappings = {
+    start_jumping = '<C-F>',
+}
+};
 
 -- functional
-require('mini.files').setup()
--- require('mini.notify').setup();
+require('mini.files').setup();
 
 -- visual
 require('mini.cursorword').setup { delay = 1000 }

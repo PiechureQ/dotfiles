@@ -205,11 +205,6 @@ require('lazy').setup({
         "nvim-telescope/telescope-fzy-native.nvim",
         "xiyaowong/telescope-emoji.nvim",
       },
-      {
-        "nvim-telescope/telescope-frecency.nvim",
-        -- install the latest stable version
-        version = "*",
-      }
     },
   },
 
@@ -220,10 +215,6 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
   },
 
   -- yank animations

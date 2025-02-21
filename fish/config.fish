@@ -75,3 +75,7 @@ if status is-interactive
         source $HOME/.my.fish
     end
 end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

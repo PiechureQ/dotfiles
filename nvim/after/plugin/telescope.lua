@@ -1,12 +1,5 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
-local frecency = require("frecency")
-
-frecency.setup {
-    hide_current_buffer = true,
-    preceding = 'opened',
-    show_unindexed = true,
-}
 
 local default_layout_strategy = "horizontal"
 local dropdown_theme = require("telescope.themes").get_dropdown({
@@ -21,16 +14,12 @@ end
 -- most important
 nmap("<leader><leader>", builtin.resume, "Resume telescope")
 nmap("<leader>fp", builtin.diagnostics, "Search diagnostics")
-nmap("<leader>fn", builtin.find_files, "Find files")
 nmap("<leader>fo", builtin.oldfiles, "Find recently opened files")
-nmap("<leader>fi", function()
-    vim.cmd [[Telescope frecency default_text=:CWD:]]
-end, "Find files")
+nmap("<leader>fi", builtin.find_files, "Find files")
 nmap("<leader>fI", function()
     builtin.find_files({ cwd = vim.fn.expand('%:h') })
 end, "Find files (in current buf path)")
 
-nmap("<leader>?", builtin.oldfiles, "Find recently opened files")
 nmap("<leader>/", function()
     builtin.current_buffer_fuzzy_find(dropdown_theme)
 end, "Fuzzily search in current buffer]")
@@ -129,4 +118,3 @@ telescope.setup({
 telescope.load_extension("fzy_native")
 telescope.load_extension("emoji")
 telescope.load_extension("luasnip")
-telescope.load_extension("frecency")
