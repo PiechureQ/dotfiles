@@ -10,6 +10,7 @@ sudo apt install stow
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 #tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # https://github.com/tmux/tmux/releases
 
 # fish
