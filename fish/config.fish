@@ -2,11 +2,16 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     function fish_greeting
-        neofetch --kitty $HOME/.config/fish/nf400.jpg --disable icons theme wm_theme --colors 4 4 7 5 6 7 --color_blocks off
-        echo 🙏 (fortune -s) 🙏
+        echo 'helo'
+        # fastfetch --image "$HOME/.config/fish/nf400.jpg" \
+        #   --image-tty kitty \
+        #   --disable icons theme wmTheme \
+        #   --colors 4 4 7 5 6 7 \
+        #   --no-color-blocks
+	# echo 🙏 (fortune -s) 🙏
     end
 
-    set -L
+    # set -L
     set -U fish_color_normal normal
     set -U fish_color_command blue
     set -U fish_color_autosuggestion brmagenta -d
@@ -21,7 +26,6 @@ if status is-interactive
     set -U fish_color_operator blue --bold
 
     alias q exit
-    alias ff ranger
     alias cat bat
 
     abbr -a npr npm run
@@ -63,13 +67,9 @@ if status is-interactive
 
     set -U EDITOR nv
 
-    alias config 'git --git-dir=$HOME/.myconfig/ --work-tree=$HOME/'
-    abbr -a con config
-    abbr -a conf config
-    abbr -a cnf config
-
     # faster typing
-    xset r rate 260 45
+    xset r rate 200 45
+    # gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 
     if test -e $HOME/.my.fish
         source $HOME/.my.fish

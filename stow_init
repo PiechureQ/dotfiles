@@ -1,0 +1,31 @@
+#!/usr/bin/fish
+
+function stow_init
+    set source_folder $argv[1]
+    set target_folder (test -n "$argv[2]"; and echo $argv[2]; or echo ~/.config/$source_folder)
+
+    if test -z "$source_folder"
+        echo "Użycie: stow_init <nazwa_folderu> [ścieżka_docelowa]"
+        return 1
+    end
+
+    if test -d "$target_folder"
+        echo "Folder docelowy '$target_folder' już istnieje."
+        read -p "Czy chcesz go przenieść do '$target_folder.dotfiles-backup' i kontynuować? (y/n): " confirm
+        switch $confirm
+            case y Y
+                mv "$target_folder" "$target_folder.dotfiles-backup"
+                echo "Przeniesiono do '$target_folder.dotfiles-backup'"
+            case '*'
+                echo "Anulowano."
+                return 0
+        end
+    end
+
+    mkdir -p "$target_folder"
+    echo "Utworzono folder docelowy '$target_folder'"
+
+    stow $source_folder -t $target_folder
+end
+
+stow_init $argv
