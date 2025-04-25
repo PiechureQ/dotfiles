@@ -74,6 +74,8 @@ if status is-interactive
     if test -e $HOME/.my.fish
         source $HOME/.my.fish
     end
+
+    alias clipp 'xclip -selection clipboard'
 end
 
 # bun

@@ -1,6 +1,7 @@
 transparent = require("transparent")
 
 my_favs = {
+  "base16-qualia",
   "base16-embers",
   -- cool pink/pastel
   "base2tone_cave_dark",
