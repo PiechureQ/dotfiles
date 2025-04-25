@@ -65,10 +65,13 @@ if status is-interactive
 
     abbr -a nvi neovide
 
+    set -g -e EDITOR
+    set -g EDITOR nv
     set -U EDITOR nv
 
     # faster typing
-    xset r rate 200 45
+    # gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+    # gsettings set org.gnome.desktop.peripherals.keyboard delay 200
     # gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 
     if test -e $HOME/.my.fish
@@ -76,6 +79,13 @@ if status is-interactive
     end
 
     alias clipp 'xclip -selection clipboard'
+end
+
+function track_var_change --on-event fish_preexec
+    if string match -qr '^set\s+\w+' -- $argv[1]
+        set var_name (string replace -r '^set\s+(\w+).*' '$1' -- $argv[1])
+        echo "Most recent changed variable: $var_name = $$var_name"
+    end
 end
 
 # bun
