@@ -78,14 +78,8 @@ if status is-interactive
         source $HOME/.my.fish
     end
 
+    set --export PATH .local/bin $PATH
     alias clipp 'xclip -selection clipboard'
-end
-
-function track_var_change --on-event fish_preexec
-    if string match -qr '^set\s+\w+' -- $argv[1]
-        set var_name (string replace -r '^set\s+(\w+).*' '$1' -- $argv[1])
-        echo "Most recent changed variable: $var_name = $$var_name"
-    end
 end
 
 # bun
