@@ -1,0 +1,97 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: 'FiraCode Nerd Font', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
+    font-size: 15px;
+    /* min-height: 0; */
+}
+
+window#waybar {
+    /* background: transparent; */
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    
+    color: #eed8e5;
+}
+
+tooltip {
+  background: rgba(43, 48, 59, 0.8);
+  border: 1px solid rgba(100, 114, 125, 0.5);
+}
+tooltip label {
+  color: #90758d;
+}
+
+#window {
+    font-weight: bold;
+    /* font-family: "Ubuntu"; */
+}
+
+#workspaces {
+    padding: 0 5px;
+}
+
+#workspaces button {
+    padding: 1 5px;
+    background: transparent;
+    color: #90758d;
+}
+
+#workspaces button.focused {
+    color: #eed8e5;
+    border-top: 2px solid #eed8e5;
+}
+
+#mode {
+    background: #64727D;
+    border-bottom: 3px solid #eed8e5;
+}
+
+/* #workspaces, #mode, #scratchpad {} */
+/* #window {} */
+#custom-media, #cpu, #memory, #temperature, #sys, #power, #clock, #language, #idle_inhibitor, #exit {
+    margin: 0 5px;
+}
+.horizontal .drawer .module {
+    margin: 0 15px 0 0;
+}
+.modules-left, .modules-right {
+    margin: 0 5px;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.charging, #battery.plugged {
+    color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+    color: #f53c3c;
+}
+
+#network.disconnected {
+    background: #f53c3c;
+}
