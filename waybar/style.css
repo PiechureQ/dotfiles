@@ -53,8 +53,14 @@ tooltip label {
 
 /* #workspaces, #mode, #scratchpad {} */
 /* #window {} */
-#custom-media, #cpu, #memory, #temperature, #sys, #power, #clock, #language, #idle_inhibitor, #exit {
+#custom-media, #cpu, #memory, #temperature, #sys, #power, #clock, #language, #idle_inhibitor, #custom-notification, #exit {
     margin: 0 5px;
+}
+#custom-notification, #temperature {
+    padding: 0 15px 0 0;
+}
+#clock, #cpu, #custom-nc {
+    padding: 0 0 0 15px;
 }
 .horizontal .drawer .module {
     margin: 0 15px 0 0;

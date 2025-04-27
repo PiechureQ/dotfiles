@@ -7,10 +7,10 @@
   "layer-shell": true,
   "layer-shell-cover-screen": true,
   "cssPriority": "application",
-  "control-center-margin-top": 10,
-  "control-center-margin-bottom": 10,
-  "control-center-margin-right": 10,
-  "control-center-margin-left": 10,
+  "control-center-margin-top": 40,
+  "control-center-margin-bottom": 20,
+  "control-center-margin-right": 30,
+  "control-center-margin-left": 30,
   "notification-2fa-action": true,
   "notification-inline-replies": false,
   "notification-icon-size": 64,
@@ -29,19 +29,8 @@
   "transition-time": 200,
   "hide-on-clear": false,
   "hide-on-action": true,
-  "text-empty": "No Notifications",
+  "text-empty": "Brak powiadomień",
   "script-fail-notify": true,
-  "scripts": {
-    "example-script": {
-      "exec": "echo 'Do something...'",
-      "urgency": "Normal"
-    },
-    "example-action-script": {
-      "exec": "echo 'Do something actionable!'",
-      "urgency": "Normal",
-      "run-on": "action"
-    }
-  },
   "notification-visibility": {
     "example-name": {
       "state": "muted",
@@ -50,24 +39,28 @@
     }
   },
   "widgets": [
+    "buttons-grid",
     "inhibitors",
+    "volume",
+    "backlight",
+    "mpris",
     "title",
     "dnd",
     "notifications"
   ],
   "widget-config": {
     "inhibitors": {
-      "text": "Inhibitors",
-      "button-text": "Clear All",
+      "text": "Inhibitory",
+      "button-text": "Usuń wszystkie",
       "clear-all-button": true
     },
     "title": {
-      "text": "Notifications",
+      "text": "Powiadomienia",
       "clear-all-button": true,
-      "button-text": "Clear All"
+      "button-text": "Usuń wszystkie"
     },
     "dnd": {
-      "text": "Do Not Disturb"
+      "text": "Nie przeszkadzać"
     },
     "label": {
       "max-lines": 5,
@@ -78,15 +71,46 @@
       "image-radius": 12,
       "blacklist": []
     },
+    "volume": {
+      "label": "󰕾"
+    },
+    "backlight": {
+      "label": "💡"
+    },
     "buttons-grid": {
       "actions": [
-        {
-          "label": "直",
-          "type": "toggle",
-          "active": true,
-          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
-          "update-command": "sh -c '[[ $(nmcli radio wifi) == \"enabled\" ]] && echo true || echo false'"
-        }
+          {
+              "label": "󰐥",
+              "command": "systemctl poweroff"
+          },
+          {
+              "label": "󰜉",
+              "command": "systemctl reboot"
+          },
+          {
+              "label": "󰌾",
+              "command": "swaylock"
+          },
+          {
+              "label": "󰍃",
+              "command": "swaymsg exit"
+          },
+          {
+              "label": "󰕾",
+              "command": "pactl set-sink-mute \@DEFAULT_SINK@ toggle"
+          },
+          {
+              "label": "󰍬",
+              "command": "pactl set-source-mute \@DEFAULT_SOURCE@ toggle"
+          },
+          {
+              "label": "󰖩",
+              "command": "kitty -e nmtui"
+          },
+          {
+              "label": "󰂯",
+              "command": "flatpak run io.github.ebonjaeger.bluejay"
+          }
       ]
     }
   }

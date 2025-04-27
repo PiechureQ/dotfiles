@@ -4,30 +4,30 @@
 
 /* ── 1. Palette & Globals (Using @define-color) ──────────────────── */
 
-@define-color theme_fg rgba(248, 248, 252, 0.98); /* Primary Text */
-@define-color theme_fg_secondary rgba(215, 220, 225, 0.78); /* Secondary Text */
-@define-color theme_bg rgba(22, 22, 28, 0.22); /* Panel/Background */
-@define-color popup_bg rgba(20, 25, 25, 0.5); /* Floating Notification Background */
-@define-color module_bg rgba(20, 20, 20, 0.46); /* Default Module Background */
-@define-color module_hover_bg rgba(210, 215, 225, 0.35); /* Module Hover */
-@define-color button_bg rgba(130, 135, 145, 0.28); /* Button Default */
-@define-color button_hover_bg rgba(150, 155, 165, 0.40); /* Button Hover */
-@define-color accent_color rgba(10, 132, 255, 0.8); /* Accent Active */
-@define-color accent_color_hover #198de5; /* Accent Hover */
-@define-color border_light rgba(255, 255, 255, 0.18);
-@define-color border_dark rgba(0, 0, 0, 0.06);
+@define-color theme_fg rgba(238, 216, 229, 0.98); /* Primary Text */
+@define-color theme_fg_secondary rgba(200, 163, 188, 0.8); /* Secondary Text */
+@define-color theme_bg rgba(12, 6, 17, 0.8); /* Panel/Background */
+@define-color popup_bg rgba(12, 6, 17, 0.9); /* Floating Notification Background */
+@define-color module_bg rgba(12, 6, 17, 0.45); /* Default Module Background */
+@define-color module_hover_bg rgba(238, 216, 229, 0.35); /* Module Hover */
+@define-color button_bg rgba(130, 135, 145, 0.2); /* Button Default */
+@define-color button_hover_bg rgba(150, 155, 165, 0.4); /* Button Hover */
+@define-color accent_color rgba(200, 163, 188, 0.3); /* Accent Active */
+@define-color accent_color_hover rgba(200, 163, 188, 0.9); /* Accent Hover */
+@define-color border_light rgba(200, 163, 188, 0.3);
+@define-color border_dark rgba(200, 163, 188, 0.1);
 @define-color border_medium alpha(@border_light, 0.5); /* Approx rgba(255, 255, 255, 0.09) */
 @define-color icon_primary @theme_fg;
-@define-color icon_secondary rgba(215, 220, 225, 0.88);
-@define-color slider_trough_bg rgba(50, 55, 65, 0.35);
-@define-color slider_thumb_bg white;
-@define-color close_button_bg rgba(110, 110, 115, 0.15);
-@define-color close_button_hover_bg rgba(130, 130, 135, 0.30);
+@define-color icon_secondary @theme_fg_secondary;
+@define-color slider_trough_bg @theme_bg;
+@define-color slider_thumb_bg @theme_fg;
+@define-color close_button_bg rgba(130, 135, 145, 0.8);
+@define-color close_button_hover_bg rgba(130, 135, 145, 0.9);
 @define-color mpris_player_bg rgba(0, 0, 0, 0.5);
 
 /* ── Base Reset ───────────────────────────────────────────────────── */
 * {
-  font-family: "Inter", "SF Pro Text", sans-serif;
+  font-family: 'FiraCode Nerd Font', 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
   font-size: 16px;
   color: @theme_fg;
   border: none;
@@ -42,13 +42,25 @@
 
 /* ── 2. Control Center Container ─────────────────────────────────── */
 .control-center {
-  background-color: @theme_bg;
-  border: 1px solid @border_medium;
-  border-top-color: @border_light;
-  border-bottom-color: @border_dark;
-  border-radius: 24px;
-  padding: 18px;
-  min-width: 380px;
+  background: linear-gradient(
+      to bottom, 
+      rgba(12, 6, 17, 0.95) 0%,
+      rgba(12, 6, 17, 0.8) 50%,
+      rgba(12, 6, 17, 0.3) 80%,
+      rgba(12, 6, 17, 0) 100%
+  );
+  /* border: 2px solid @border_medium; */
+  /* border-image:  */
+  /*   linear-gradient( */
+  /*     to bottom,  */
+  /*     rgba(200, 163, 188, 0.3) 0%, */
+  /*     rgba(200, 163, 188, 0.05) 50%, */
+  /*     rgba(200, 163, 188, 0) 80%, */
+  /*     rgba(200, 163, 188, 0) 100% */
+  /*   ) 1; */
+  /* border-radius: 0; */
+  padding: 20px;
+  min-width: 360px;
 }
 
 /* ── 3. Widget Modules ───────────────────────────────────────────── */
@@ -59,37 +71,71 @@
 .control-center-list > box > *:not(.widget-title) {
   background-color: @module_bg;
   border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
   border: 1px solid @border_medium;
 }
-.widget-volume, .widget-backlight { padding: 14px 18px; }
-.widget-buttons-grid { padding: 12px; }
+.widget-volume, .widget-backlight { padding: 10px 10px; }
+.widget-buttons-grid { padding: 10px; }
 .control-center > box > *:last-child { margin-bottom: 0; }
+
+.widget-dnd  {
+  margin-top: 10px;
+}
+.widget-dnd label {
+  font-size: 14px;
+  color: @icon_primary;
+  min-width: 24px;
+}
+.widget-dnd > switch {
+  font-size: initial;
+  border-radius: 12px;
+  background: @module_bg;
+  transition: background-color 0.15s ease;
+  border: 1px solid @border_light;
+  /* color: @theme_bg; */
+  box-shadow: none;
+}
+
+.widget-dnd > switch:checked {
+  background: @accent_color;
+}
+
+.widget-dnd > switch slider {
+  background: @accent_color_hover;
+  border-radius: 12px;
+}
+
+.widget-dnd button:hover,
+.widget-dnd button:active {
+  background-color: @button_hover_bg;
+}
 
 /* Widget Titles */
 .widget-title {
   background: transparent;
   border: none;
-  padding: 4px 6px 12px 6px;
-  margin-bottom: 8px;
+  /* padding: 5px 6px 12px 6px; */
+  /* margin-bottom: 8px; */
 }
 .widget-title label {
   font-family: inherit;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   color: @theme_fg_secondary;
-  margin-left: 4px;
+  /* margin-left: 0px; */
   background: none;
 }
-.widget-title button {
+.widget-title button label {
   font-family: inherit;
-  font-size: 16px;
+  font-size: 12px;
   color: @theme_fg;
+}
+.widget-title button {
   background-color: @button_bg;
   border: none;
   border-radius: 10px;
-  padding: 7px 16px;
+  padding: 5px 15px;
   transition: background-color 0.15s ease;
 }
 .widget-title button:hover,
@@ -151,7 +197,7 @@
 
 /* ── 5. Sliders (Volume, Backlight) ─────────────────────────────── */
 .widget-volume label, .widget-backlight label {
-  font-size: 24px;
+  font-size: 18px;
   color: @icon_primary;
   min-width: 24px;
   margin-right: 14px;
@@ -190,11 +236,11 @@ scale slider {
   background: none;
 }
 .widget-buttons-grid > flowbox > flowboxchild {
-  padding: 3px;
+  padding: 10px 5px;
   background: none;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button {
-  background-color: rgba(0,0,0, 0.7);
+  background-color: @button_bg;
   border-radius: 66px;
   padding: 14px;
   min-width: 24px;
@@ -203,12 +249,12 @@ scale slider {
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background-color: rgba(20,20,20, 0.45);
+  background-color: @accent_color_hover;
   color: @icon_primary;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
   background-color: @accent_color;
-  color: white;
+  color: @icon_primary;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
   background-color: @accent_color_hover;
@@ -230,7 +276,6 @@ scale slider {
   transition: background-color 0.15s ease;
 }
 .control-center .notification-row:hover .notification-background {
-
   border-radius: 18px;
   background-color: @module_hover_bg;
 }
@@ -240,7 +285,6 @@ scale slider {
   margin-bottom: 5px;
 }
 .control-center .notification .body {
-
   color: @theme_fg_secondary;
 }
 .control-center .notification .time {
@@ -260,8 +304,7 @@ scale slider {
   background-color: @close_button_hover_bg;
 }
 .control-center .close-button image {
-    margin-right: 12px; /* Adjust this value for desired spacing */
-  color: @icon_secondary;
+  color: rgba(12, 6, 17, 0.9);
 }
 
 .control-center .notification image {

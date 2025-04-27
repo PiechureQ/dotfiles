@@ -4,9 +4,10 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "mode": "overlay",
+    "mode": "dock",
     "spacing": 0, // Gaps between modules (4px)
     "fixed-center": false,
+    "margin": "0 0 -20 0",
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
@@ -27,14 +28,29 @@
 
         "clock",
 
-        // "sway/language",
-        "idle_inhibitor",
-        "custom/nc",
-        "group/exit"
+        "sway/language",
+        // "idle_inhibitor",
+        "custom/nc"
     ],
     "custom/nc": {
-        "format":  "🕭 ",
+        "tooltip": false,
+        "format": "≡ {icon}",
+        "format-icons": {
+            "notification": "🔔",
+            "none": "",
+            "dnd-notification": "🔕",
+            "dnd-none": "🔕",
+            "inhibited-notification": "🔔<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "🔔",
+            "dnd-inhibited-notification": "🔕",
+            "dnd-inhibited-none": "🔕"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
         "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
     "custom/off": {
         "format": "⏻ ",
@@ -184,7 +200,7 @@
         "format": "{volume}% {icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": " ",
         "format-source": "{volume}%  ",
         "format-source-muted": " ",
         "format-icons": {
@@ -194,7 +210,7 @@
             "phone": " ",
             "portable": " ",
             "car": " ",
-            "default": ["", " ", " "]
+            "default": [" ", " ", " "]
         },
         "on-click": "pavucontrol"
     },
