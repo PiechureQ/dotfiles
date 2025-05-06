@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 
     function fish_greeting
-        echo 'helo'
+        fastfetch
         # fastfetch --image "$HOME/.config/fish/nf400.jpg" \
         #   --image-tty kitty \
         #   --disable icons theme wmTheme \

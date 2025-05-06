@@ -24,7 +24,8 @@
         "temperature",
 
         "group/sys",
-        "group/power",
+        // "group/power",
+        "battery",
 
         "clock",
 

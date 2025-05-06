@@ -242,7 +242,7 @@ scale slider {
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background-color: @button_bg;
   border-radius: 66px;
-  padding: 14px;
+  padding: 14px 28px;
   min-width: 24px;
   min-height: 24px;
   color: @icon_secondary;
@@ -323,7 +323,7 @@ scale slider {
   border: 1px solid @border_light;
   border-radius: 18px;
   padding: 18px;
-  margin: 8px 14px;
+  margin: 40px;
   transition: background-color 0.15s ease;
 }
 .floating-notifications .notification-row:hover .notification-background {
@@ -358,8 +358,7 @@ scale slider {
   background-color: @close_button_hover_bg;
 }
 .floating-notifications .close-button image {
-    margin-right: 12px; /* Adjust this value for desired spacing */
-  color: @icon_secondary;
+  color: rgba(12, 6, 17, 0.9);
 }
 .floating-notifications .notification-alt-actions {
   margin-top: 16px;
