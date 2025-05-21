@@ -8,6 +8,7 @@
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+set $alt Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -51,7 +52,7 @@ exec ~/.azotebg
 
 ### Input configuration
 input type:keyboard {
-    xkb_layout pl,us
+    xkb_layout pl
     xkb_options caps:escape
     repeat_delay 260
     repeat_rate 45
@@ -217,6 +218,9 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 10+
 # Special key to take a screenshot with grim
 bindsym Print exec grim
 
+bindsym $mod+$alt+k exec playerctl next
+bindsym $mod+$alt+j exec playerctl previous
+bindsym $mod+$alt+l exec playerctl play-pause
 
 # Window
 default_border pixel 2 
@@ -235,6 +239,11 @@ exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
 # polkit
 exec --no-startup-id lxpolkit
+
+# ime
+exec_always fcitx5 -d
+# hangul keyboard preview
+bindsym $alt+backslash exec qimgv /home/xmichalx/Obrazy/hangul.png
 
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
