@@ -46,10 +46,10 @@ require('lazy').setup({
         -- RRGGBBAA = true,         -- #RRGGBBAA hex codes
         -- rgb_fn   = false,         -- CSS rgb() and rgba() functions
         -- hsl_fn   = false,        -- CSS hsl() and hsla() functions
-        css  = true,   -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css  = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
         -- css_fn = false,          -- Enable all CSS *functions*: rgb_fn, hsl_fn
         -- Available modes: foreground, background
-        mode = 'background',   -- Set the display mode.
+        mode = 'background', -- Set the display mode.
       })
     end,
   },
@@ -175,14 +175,19 @@ require('lazy').setup({
       "David-Kunz/cmp-npm",
       "hrsh7th/cmp-emoji",
 
-      -- Add copilot integration
+      -- ai tools
       "zbirenbaum/copilot.lua",
       {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup()
+        "Exafunction/windsurf.nvim",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "hrsh7th/nvim-cmp",
+        },
+        setup = function()
+          vim.g.codeium_no_map_tab = true;
+          require("windsurf").setup();
         end
-      }
+      },
 
     },
   },

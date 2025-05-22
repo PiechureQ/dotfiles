@@ -48,8 +48,6 @@ cmp.setup({
     { name = "emoji" },
     { name = "buffer",   keyword_length = 3 },
     { name = "npm",      keyword_length = 4 },
-
-    { name = "copilot",  priority = 100,    group_index = 3 },
   }),
   experimental = {
     -- ghost_text = true,
