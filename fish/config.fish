@@ -79,7 +79,36 @@ if status is-interactive
     end
 
     set --export PATH .local/bin $PATH
-    alias clipp 'xclip -selection clipboard'
+    if test "$XDG_SESSION_TYPE" = "wayland"
+        alias pbcopy='wl-copy'
+        alias pbpaste='wl-paste'
+    else
+        alias pbcopy='xclip -selection clipboard'
+        alias pbpaste='xclip -selection clipboard -o'
+    end
+    alias clipp 'pbcopy'
+
+    function r --description "Run previous command (excluding 'r' itself)"
+        if test (count $argv) -eq 0
+            # Znajdź ostatnie polecenie które nie jest 'r'
+            set -l last_cmd (history | grep -v '^r$' | head -1)
+            
+            if test -n "$last_cmd"
+                eval $last_cmd
+            else
+                echo ""
+            end
+        else
+            # Z argumentem - znajdź ostatnie polecenie zawierające argument (także pomijając 'r')
+            set -l found_cmd (history | grep -v '^r$' | grep "$argv[1]" | head -1)
+            
+            if test -n "$found_cmd"
+                eval $found_cmd
+            else
+                echo "nieznaleziono poolecenia: $argv[1]"
+            end
+        end
+    end
 end
 
 # bun
