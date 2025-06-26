@@ -18,6 +18,16 @@ o.timeoutlen = 500
 o.showmode = false
 o.showmatch = true
 
+-- Sets how neovim will display certain whitespace characters in the editor.
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Show which line your cursor is on
+vim.o.cursorline = false
+
+-- Preview substitutions live, as you type!
+vim.o.inccommand = 'split'
+
 o.colorcolumn = '+1'
 o.cmdheight = 1
 o.shortmess = 'atOS'
@@ -53,3 +63,6 @@ vim.g.netrw_browse_spit = 2
 vim.g.netrw_liststyle = 3
 
 o.termguicolors = true
+
+-- Set to true if you have a Nerd Font installed and selected in the terminal
+vim.g.have_nerd_font = true

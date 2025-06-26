@@ -1,22 +1,10 @@
--- Custom filetypes
--- vim.filetype.add({
---     extension = {
---         eslintrc = "json",
---         prettierrc = "json",
---     },
---     pattern = {
---         [".*%.env.*"] = "sh",
---         ["ignore$"] = "conf",
---     },
--- })
-
--- -- highlight the region on yank
--- local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.hl.on_yank()`
 -- vim.api.nvim_create_autocmd('TextYankPost', {
+--   desc = 'Highlight when yanking (copying) text',
+--   group = vim.api.nvim_create_augroup('dotfiles-highlight-yank', { clear = true }),
 --   callback = function()
---     vim.highlight.on_yank()
+--     vim.hl.on_yank()
 --   end,
---   group = highlight_group,
---   pattern = '*',
 -- })
---

@@ -1,147 +1,230 @@
-local _border = "rounded"
-local telescope = require("telescope.builtin")
+local _border = 'rounded'
+local telescope = require 'telescope.builtin'
 
-vim.diagnostic.config({ float = { border = _border } })
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = _border,
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-  border = _border,
-})
-
--- LSP settings.
---  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(server_name)
-  return function(_, bufnr)
-    local nmap = function(keys, func, desc)
-      if desc then
-        desc = "LSP: " .. desc
-      end
-      vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('dotfiles-lsp-attach', { clear = true }),
+  callback = function(event, bufnr)
+    local map = function(keys, func, desc, mode)
+      mode = mode or 'n'
+      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format()
-      end,
-    })
-
     -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-      vim.lsp.buf.format()
-    end, { desc = "Format current buffer with LSP" })
+    -- vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+    --   vim.lsp.buf.format()
+    -- end, { desc = "Format current buffer with LSP" })
 
-    nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-    nmap("<leader>af", function()
-      vim.lsp.buf.code_action({ apply = true })
-    end, "[C]ode [A]ction")
-    nmap("<leader>F", vim.cmd.Format, "[F]ormat buffer")
+    -- vim.api.nvim_create_autocmd("BufWritePre", {
+    --   buffer = bufnr,
+    --   callback = function()
+    --     vim.lsp.buf.format()
+    --   end,
+    -- })
+
+    map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+    map('<leader>af', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+    -- map('<leader>F', vim.cmd.Format, '[F]ormat buffer')
 
     -- See `:help K` for why this keymap
-    nmap("K", function()
-      vim.lsp.buf.hover()
-    end, "Hover Documentation")
-    nmap("<C-k>", function()
-      vim.lsp.buf.signature_help()
-    end, "Signature Documentation")
+    map('K', vim.lsp.buf.hover, 'Hover Documentation')
+    map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
     -- go to lsp items
-    nmap("gd", telescope.lsp_definitions, "[G]oto [D]efinition")
-    nmap("gr", telescope.lsp_references, "[G]oto [R]eferences")
-    nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-    nmap("gy", vim.lsp.buf.type_definition, "Type [D]efinition")
-    nmap("gs", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+    map('gd', telescope.lsp_definitions, '[G]oto [D]efinition')
+    map('gr', telescope.lsp_references, '[G]oto [R]eferences')
+    map('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+    map('gy', vim.lsp.buf.type_definition, 'Type [D]efinition')
+    map('gs', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-    nmap("<leader>ds", telescope.lsp_document_symbols, "[D]ocument [S]ymbols")
+    map('<leader>ds', telescope.lsp_document_symbols, '[D]ocument [S]ymbols')
 
-    -- Diagnostic keymaps
-    -- nmap("[d", vim.diagnostic.goto_prev, "Diagnostics previous item")
-    -- nmap("]d", vim.diagnostic.goto_next, "Diagnostics next item")
-    nmap("<leader>e", vim.diagnostic.open_float, "Open error floating window")
+    map('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-    nmap("<leader>ws", telescope.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    map('<leader>tt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
 
-    nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-    nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-    nmap("<leader>wl", function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, "[W]orkspace [L]ist Folders")
+    -- if server_name == 'ts_ls' then
+    --   -- vim.keymap.set("n", "<leader>gs", function()
+    --   --   local fname = vim.fn.expand("%")
+    --   --   if string.find(fname, "tsx") then
+    --   --     vim.cmd("e " .. string.gsub(fname, "tsx", "scss"))
+    --   --   end
+    --   -- end, { desc = "[G]oto [S]tyle source" })
+    --
+    --   local function organize_imports()
+    --     -- gets the current bufnr if no bufnr is passed
+    --     if not bufnr then
+    --       bufnr = vim.api.nvim_get_current_buf()
+    --     end
+    --
+    --     -- params for the request
+    --     local params = {
+    --       command = '_typescript.organizeImports',
+    --       arguments = { vim.api.nvim_buf_get_name(bufnr) },
+    --       title = '',
+    --     }
+    --
+    --     -- perform a syncronous request
+    --     -- 500ms timeout depending on the size of file a bigger timeout may be needed
+    --     vim.lsp.buf_request_sync(bufnr, 'workspace/executeCommand', params, 500)
+    --   end
+    --
+    --   nmap('<leader>ai', organize_imports, 'Code [A]ction organize [I]mports')
+    -- end
 
-    -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-      vim.lsp.buf.format()
-    end, { desc = 'Format current buffer with LSP' })
-
-    -- typescript specific mapings
-    if server_name == "ts_ls" then
-      -- vim.keymap.set("n", "<leader>gs", function()
-      --   local fname = vim.fn.expand("%")
-      --   if string.find(fname, "tsx") then
-      --     vim.cmd("e " .. string.gsub(fname, "tsx", "scss"))
-      --   end
-      -- end, { desc = "[G]oto [S]tyle source" })
-
-      local function organize_imports()
-        -- gets the current bufnr if no bufnr is passed
-        if not bufnr then
-          bufnr = vim.api.nvim_get_current_buf()
-        end
-
-        -- params for the request
-        local params = {
-          command = "_typescript.organizeImports",
-          arguments = { vim.api.nvim_buf_get_name(bufnr) },
-          title = "",
-        }
-
-        -- perform a syncronous request
-        -- 500ms timeout depending on the size of file a bigger timeout may be needed
-        vim.lsp.buf_request_sync(bufnr, "workspace/executeCommand", params, 500)
+    -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
+    ---@param client vim.lsp.Client
+    ---@param method vim.lsp.protocol.Method
+    ---@param bufnr? integer some lsp support methods only in specific files
+    ---@return boolean
+    local function client_supports_method(client, method, bufnr)
+      if vim.fn.has 'nvim-0.11' == 1 then
+        return client:supports_method(method, bufnr)
+      else
+        return client.supports_method(method, { bufnr = bufnr })
       end
-
-      nmap("<leader>ai", organize_imports, "Code [A]ction organize [I]mports")
     end
-  end
-end
+
+    -- The following code creates a keymap to toggle inlay hints in your
+    -- code, if the language server you are using supports them
+    --
+    -- This may be unwanted, since they displace some of your code
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+      map('<leader>th', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+      end, '[T]oggle Inlay [H]ints')
+    end
+  end,
+})
+
+-- Diagnostic Config
+-- See :help vim.diagnostic.Opts
+vim.diagnostic.config {
+  severity_sort = true,
+  float = { border = _border, source = 'if_many' },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  signs = vim.g.have_nerd_font and {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚 ',
+      [vim.diagnostic.severity.WARN] = '󰀪 ',
+      [vim.diagnostic.severity.INFO] = '󰋽 ',
+      [vim.diagnostic.severity.HINT] = '󰌶 ',
+    },
+  } or {},
+  virtual_text = {
+    source = 'if_many',
+    spacing = 2,
+    format = function(diagnostic)
+      local diagnostic_message = {
+        [vim.diagnostic.severity.ERROR] = diagnostic.message,
+        [vim.diagnostic.severity.WARN] = diagnostic.message,
+        [vim.diagnostic.severity.INFO] = diagnostic.message,
+        [vim.diagnostic.severity.HINT] = diagnostic.message,
+      }
+      return diagnostic_message[diagnostic.severity]
+    end,
+  },
+}
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = _border,
+})
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = _border,
+})
+
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Enable the following language servers
--- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
 -- Add any additional override configuration in the following tables. They will be passed to
 -- the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  ts_ls = {},
+  -- "pmizio/typescript-tools.nvim" used instead
+  -- ts_ls = {},
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = 'Replace',
+        },
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      },
     },
   },
 }
 
 -- Setup neovim lua configuration
-require("neodev").setup()
-
--- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- require('neodev').setup()
+require('typescript-tools').setup {
+  -- on_attach = function() ... end,
+  -- handlers = { ... },
+  settings = {
+    -- spawn additional tsserver instance to calculate diagnostics on itsinglesingle
+    separate_diasinglegnostic_server = true,
+    -- "change"|"insert_leave" determine when the client asks the server about diagnostic
+    publish_diagnostic_on = 'insert_leave',
+    -- array of strings("fix_all"|"add_missing_imports"|"remove_unused"|
+    -- "remove_unused_imports"|"organize_imports") -- or string "all"
+    -- to include all supported code actions
+    -- specify commands exposed as code_actions
+    expose_as_code_action = {},
+    -- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
+    -- not exists then standard path resolution strategy is applied
+    tsserver_path = nil,
+    -- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
+    -- (see 💅 `styled-components` support section)
+    tsserver_plugins = {},
+    -- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
+    -- memory limit in megabytes or "auto"(basically no limit)
+    tsserver_max_memory = 'auto',
+    -- described below
+    tsserver_format_options = {},
+    tsserver_file_preferences = {},
+    -- locale of all tsserver messages, supported locales you can find here:
+    -- https://github.com/microsoft/TypeScript/blob/3c221fc086be52b19801f6e8d82596d04607ede6/src/compiler/utilitiesPublic.ts#L620
+    tsserver_locale = 'en',
+    -- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
+    complete_function_calls = false,
+    include_completions_with_insert_text = true,
+    -- CodeLens
+    -- WARNING: Experimental feature also in VSCode, because it might hit performance of server.
+    -- possible values: ("off"|"all"|"implementations_only"|"references_only")
+    code_lens = 'off',
+    -- by default code lenses are displayed on all referencable values and for some of you it can
+    -- be too much this option reduce count of them by removing member references from lenses
+    disable_member_code_lens = true,
+    -- JSXCloseTag
+    -- WARNING: it is disabled by default (maybe you configuration or distro already uses nvim-ts-autotag,
+    -- that maybe have a conflict if enable this feature. )
+    jsx_close_tag = {
+      enable = false,
+      filetypes = { 'javascriptreact', 'typescriptreact' },
+    },
+  },
+}
 
 -- Ensure the servers above are installed
-local mason_lspconfig = require("mason-lspconfig")
-
-mason_lspconfig.setup({
-  ensure_installed = vim.tbl_keys(servers),
+local ensure_installed = vim.tbl_keys(servers or {})
+vim.list_extend(ensure_installed, {
+  'stylua', -- Used to format Lua code
 })
+require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
--- mason_lspconfig.setup_handlers({
---   function(server_name)
---     require("lspconfig")[server_name].setup({
---       capabilities = capabilities,
---       on_attach = on_attach(server_name),
---       settings = servers[server_name],
---       filetypes = (servers[server_name] or {}).filetypes,
---     })
---   end,
--- })
+require('mason-lspconfig').setup {
+  ensure_installed = {},
+  automatic_installation = false,
+  handlers = {
+    function(server_name)
+      local server = servers[server_name] or {}
+      -- This handles overriding only values explicitly passed
+      -- by the server configuration above. Useful when disabling
+      -- certain features of an LSP (for example, turning off formatting for ts_ls)
+      server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      require('lspconfig')[server_name].setup(server)
+    end,
+  },
+}
