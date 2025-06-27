@@ -63,6 +63,12 @@ if status is-interactive
         nvim $argv
     end
 
+    abbr dockerc docker compose
+    abbr dcompose docker compose
+    abbr doco docker compose
+    abbr docou docker compose up
+    abbr docor docker compose run
+
     abbr -a nvi neovide
 
     set -g -e EDITOR

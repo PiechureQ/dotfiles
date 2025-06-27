@@ -3,23 +3,11 @@ local telescope = require 'telescope.builtin'
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('dotfiles-lsp-attach', { clear = true }),
-  callback = function(event, bufnr)
+  callback = function(event)
     local map = function(keys, func, desc, mode)
       mode = mode or 'n'
       vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
-
-    -- Create a command `:Format` local to the LSP buffer
-    -- vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-    --   vim.lsp.buf.format()
-    -- end, { desc = "Format current buffer with LSP" })
-
-    -- vim.api.nvim_create_autocmd("BufWritePre", {
-    --   buffer = bufnr,
-    --   callback = function()
-    --     vim.lsp.buf.format()
-    --   end,
-    -- })
 
     map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     map('<leader>af', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
@@ -31,6 +19,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- go to lsp items
     map('gd', telescope.lsp_definitions, '[G]oto [D]efinition')
+    map('gD', function()
+      telescope.lsp_definitions {
+        jump_type = 'vsplit',
+      }
+    end, '[G]oto [D]efinition (split)')
     map('gr', telescope.lsp_references, '[G]oto [R]eferences')
     map('gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
     map('gy', vim.lsp.buf.type_definition, 'Type [D]efinition')
@@ -41,35 +34,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
     map('<leader>tt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
-
-    -- if server_name == 'ts_ls' then
-    --   -- vim.keymap.set("n", "<leader>gs", function()
-    --   --   local fname = vim.fn.expand("%")
-    --   --   if string.find(fname, "tsx") then
-    --   --     vim.cmd("e " .. string.gsub(fname, "tsx", "scss"))
-    --   --   end
-    --   -- end, { desc = "[G]oto [S]tyle source" })
-    --
-    --   local function organize_imports()
-    --     -- gets the current bufnr if no bufnr is passed
-    --     if not bufnr then
-    --       bufnr = vim.api.nvim_get_current_buf()
-    --     end
-    --
-    --     -- params for the request
-    --     local params = {
-    --       command = '_typescript.organizeImports',
-    --       arguments = { vim.api.nvim_buf_get_name(bufnr) },
-    --       title = '',
-    --     }
-    --
-    --     -- perform a syncronous request
-    --     -- 500ms timeout depending on the size of file a bigger timeout may be needed
-    --     vim.lsp.buf_request_sync(bufnr, 'workspace/executeCommand', params, 500)
-    --   end
-    --
-    --   nmap('<leader>ai', organize_imports, 'Code [A]ction organize [I]mports')
-    -- end
 
     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
     ---@param client vim.lsp.Client
@@ -160,7 +124,24 @@ local servers = {
 -- Setup neovim lua configuration
 -- require('neodev').setup()
 require('typescript-tools').setup {
-  -- on_attach = function() ... end,
+  on_attach = function(event)
+    local map = function(keys, func, desc, mode)
+      mode = mode or 'n'
+      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    end
+    -- Custom lsp action
+    -- TSToolsOrganizeImports - sorts and removes unused imports
+    -- TSToolsSortImports - sorts imports
+    -- TSToolsRemoveUnusedImports - removes unused imports
+    -- TSToolsRemoveUnused - removes all unused statements
+    -- TSToolsAddMissingImports - adds imports for all statements that lack one and can be imported
+    -- TSToolsFixAll - fixes all fixable errors
+    -- TSToolsGoToSourceDefinition - goes to source definition (available since TS v4.7)
+    -- TSToolsRenameFile - allow to rename current file and apply changes to connected files
+    -- TSToolsFileReferences
+    map('<leader>ai', ':TSToolsOrganizeImports<CR>', 'Organize Imports')
+    map('<leader>as', ':TSToolsFixAll<CR>', 'Fix all fixable errors')
+  end,
   -- handlers = { ... },
   settings = {
     -- spawn additional tsserver instance to calculate diagnostics on itsinglesingle

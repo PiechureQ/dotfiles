@@ -92,15 +92,6 @@ telescope.setup {
     },
     lsp_definitions = {
       layout_strategy = 'cursor',
-      jump_type = 'vsplit',
-      mappings = {
-        i = {
-          ['<CR>'] = 'file_vsplit',
-        },
-        n = {
-          ['<CR>'] = 'file_vsplit',
-        },
-      },
     },
     lsp_references = {
       include_declaration = false,
