@@ -230,21 +230,21 @@ require('lazy').setup({
       'hrsh7th/cmp-cmdline',
       'David-Kunz/cmp-npm',
       'hrsh7th/cmp-emoji',
-
-      -- ai tools
-      'zbirenbaum/copilot.lua',
-      {
-        'Exafunction/windsurf.nvim',
-        dependencies = {
-          'nvim-lua/plenary.nvim',
-          'hrsh7th/nvim-cmp',
-        },
-        setup = function()
-          vim.g.codeium_no_map_tab = true
-          require('windsurf').setup()
-        end,
-      },
     },
+  },
+
+  -- ai tools
+  'zbirenbaum/copilot.lua',
+  {
+    'Exafunction/windsurf.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    setup = function()
+      vim.g.codeium_no_map_tab = true
+      require('windsurf').setup()
+    end,
   },
 
   {
