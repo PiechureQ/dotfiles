@@ -56,6 +56,12 @@ if status is-interactive
         $EDITOR "$HOME/Dokumenty/todo/$argv[1]"
     end
 
+    abbr dockerc docker compose
+    abbr dcompose docker compose
+    abbr doco docker compose
+    abbr docou docker compose up
+    abbr docor docker compose run
+
     alias nv="nvim"
     abbr -a nvi neovide
     set -g -e EDITOR

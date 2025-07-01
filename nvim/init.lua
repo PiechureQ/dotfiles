@@ -234,6 +234,20 @@ require('lazy').setup({
     },
   },
 
+  -- ai tools
+  'zbirenbaum/copilot.lua',
+  {
+    'Exafunction/windsurf.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'hrsh7th/nvim-cmp',
+    },
+    setup = function()
+      vim.g.codeium_no_map_tab = true
+      require('windsurf').setup()
+    end,
+  },
+
   {
     'catppuccin/nvim',
     as = 'catppuccin',
