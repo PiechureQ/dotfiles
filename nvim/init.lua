@@ -36,6 +36,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   { 'echasnovski/mini.nvim', version = '*' },
+  'folke/snacks.nvim', -- for input provider snacks
 
   {
     'norcalli/nvim-colorizer.lua',
@@ -230,20 +231,6 @@ require('lazy').setup({
       'hrsh7th/cmp-cmdline',
       'David-Kunz/cmp-npm',
       'hrsh7th/cmp-emoji',
-
-      -- ai tools
-      'zbirenbaum/copilot.lua',
-      {
-        'Exafunction/windsurf.nvim',
-        dependencies = {
-          'nvim-lua/plenary.nvim',
-          'hrsh7th/nvim-cmp',
-        },
-        setup = function()
-          vim.g.codeium_no_map_tab = true
-          require('windsurf').setup()
-        end,
-      },
     },
   },
 
@@ -339,6 +326,7 @@ require('lazy').setup({
   'fladson/vim-kitty',
 
   require 'plugins.lint',
+  require 'plugins.ai',
 }, {})
 
 require 'lsp'

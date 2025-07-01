@@ -1,5 +1,4 @@
 fish/fish_variables
 fish/conf.d
-nvim/plugin
 tmux/plugins
 kitty/kitty.conf.bak

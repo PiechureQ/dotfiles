@@ -56,26 +56,30 @@ if status is-interactive
         $EDITOR "$HOME/Dokumenty/todo/$argv[1]"
     end
 
-    function nv
-        if test -z (which node)
-           node -v > /dev/null
-        end
-        nvim $argv
-    end
-
+    alias nv="nvim"
     abbr -a nvi neovide
-
     set -g -e EDITOR
-    set -g EDITOR nv
-    set -U EDITOR nv
+    set -g EDITOR nvim
+    set -U EDITOR nvim
 
     # faster typing
     # gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
     # gsettings set org.gnome.desktop.peripherals.keyboard delay 200
     # gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 
+    if test -z (which node)
+       node -v > /dev/null
+    end
+    # source local configs and keys
     if test -e $HOME/.my.fish
         source $HOME/.my.fish
+    else
+        touch $HOME/.my.fish
+    end
+    if test -e $HOME/.keys.fish
+        source $HOME/.keys.fish
+    else
+        touch $HOME/.keys.fish
     end
 
     set --export PATH .local/bin $PATH
