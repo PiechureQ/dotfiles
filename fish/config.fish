@@ -69,6 +69,8 @@ if status is-interactive
     abbr docou docker compose up
     abbr docor docker compose run
 
+    abbr tx tmux
+
     abbr -a nvi neovide
 
     set -g -e EDITOR
@@ -82,6 +84,9 @@ if status is-interactive
 
     if test -e $HOME/.my.fish
         source $HOME/.my.fish
+    end
+    if test -e $HOME/.keys.fish
+        source $HOME/.keys.fish
     end
 
     set --export PATH .local/bin $PATH

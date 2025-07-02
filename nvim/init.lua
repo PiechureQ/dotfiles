@@ -247,6 +247,8 @@ require('lazy').setup({
     end,
   },
 
+  { 'akinsho/toggleterm.nvim', version = '*', config = true },
+
   {
     'catppuccin/nvim',
     as = 'catppuccin',
@@ -341,7 +343,8 @@ require('lazy').setup({
   require 'plugins.lint',
 }, {})
 
-require 'lsp'
+require 'config.lsp'
+require('config.ai').setup()
 
 vim.keymap.set('n', '<leader>gg', function()
   vim.cmd.Git()
