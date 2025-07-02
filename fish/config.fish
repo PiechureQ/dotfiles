@@ -63,6 +63,7 @@ if status is-interactive
     abbr docor docker compose run
 
     abbr tx tmux
+    abbr txa tmux attach
 
     alias nv="nvim"
     abbr -a nvi neovide

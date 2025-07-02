@@ -25,7 +25,7 @@ if copilot_enabled then
       keymap = {
         accept = '<M-l>',
         accept_word = false,
-        accept_line = false,
+        accept_line = '<M-i>',
         next = '<M-]>',
         prev = '<M-[>',
         dismiss = '<C-]>',
