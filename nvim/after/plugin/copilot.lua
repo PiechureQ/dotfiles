@@ -1,4 +1,5 @@
-local copilot_enabled = true
+local config = require 'config'
+local copilot_enabled = config.copilot_provider == 'copilot'
 
 if copilot_enabled then
   require('copilot').setup {

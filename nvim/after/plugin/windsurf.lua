@@ -1,4 +1,5 @@
-local enable_windsurf = false
+local config = require 'config'
+local enable_windsurf = config.copilot_provider == 'windsurf'
 
 if enable_windsurf then
   vim.g.codeium_no_map_tab = true

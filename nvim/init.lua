@@ -36,6 +36,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   { 'echasnovski/mini.nvim', version = '*' },
+  'folke/snacks.nvim', -- for input provider snacks
 
   {
     'norcalli/nvim-colorizer.lua',
@@ -341,6 +342,7 @@ require('lazy').setup({
   'fladson/vim-kitty',
 
   require 'plugins.lint',
+  require 'plugins.ai',
 }, {})
 
 require 'config.lsp'
