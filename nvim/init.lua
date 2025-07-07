@@ -341,6 +341,8 @@ require('lazy').setup({
 
   'fladson/vim-kitty',
 
+  'mbbill/undotree',
+
   require 'plugins.lint',
   require 'plugins.ai',
 }, {})
@@ -352,5 +354,10 @@ vim.keymap.set('n', '<leader>gg', function()
   vim.cmd.Git()
   vim.cmd.call 'feedkeys("\\<C-w>L")'
 end, { desc = 'use :Git plugin' })
+
+vim.keymap.set('n', '<leader>u', function()
+  vim.cmd.UndotreeToggle()
+  vim.cmd.UndotreeFocus()
+end, { desc = 'Toggle undotree' })
 
 -- vim: ts=2 sts=2 sw=2 et

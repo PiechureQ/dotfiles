@@ -76,10 +76,6 @@ if status is-interactive
     # gsettings set org.gnome.desktop.peripherals.keyboard delay 200
     # gsettings set org.gnome.desktop.input-sources xkb-options "['caps:escape']"
 
-    if test -z (which node)
-       node -v > /dev/null
-    end
-
     # source local configs and keys
     if test -e $HOME/.my.fish
         source $HOME/.my.fish
