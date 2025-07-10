@@ -28,7 +28,7 @@ my_favs = {
 }
 
 -- default selected index
-local selected = 6
+local selected = 1
 function set_fav_colors(verbose)
   local new_color = my_favs[selected]
   vim.cmd.colorscheme(new_color)

@@ -140,6 +140,7 @@ require('typescript-tools').setup {
     -- TSToolsRenameFile - allow to rename current file and apply changes to connected files
     -- TSToolsFileReferences
     map('<leader>ai', ':TSToolsOrganizeImports<CR>', 'Organize Imports')
+    map('<leader>al', ':TSToolsAddMissingImports<CR>', 'Add missing imports')
     map('<leader>as', ':TSToolsFixAll<CR>', 'Fix all fixable errors')
   end,
   -- handlers = { ... },
