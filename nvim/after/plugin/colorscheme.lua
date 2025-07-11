@@ -1,7 +1,7 @@
 transparent = require 'transparent'
 
 my_favs = {
-  'kanso-zen',
+  'kanso',
   'kanso-ink',
   'vague',
   'catppuccin',
@@ -72,9 +72,6 @@ require('kanso').setup {
   transparent = false, -- do not set background color
   dimInactive = true, -- dim inactive window `:h hl-NormalNC`
 }
-
--- setup must be called before loading
-vim.cmd 'colorscheme kanso'
 
 require('vague').setup {
   transparent = false, -- don't set background
