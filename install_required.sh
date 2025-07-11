@@ -28,6 +28,8 @@ rofi wayland fork
 waybar
 swaylock
 swayidle
+# tools
+wdisplays
 
 
 
