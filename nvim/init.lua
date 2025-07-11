@@ -130,7 +130,7 @@ require('lazy').setup({
     cmd = { 'ConformInfo' },
     keys = {
       {
-        '<leader>f',
+        '<leader>ac',
         function()
           require('conform').format { async = true, lsp_format = 'fallback' }
         end,
@@ -234,29 +234,7 @@ require('lazy').setup({
     },
   },
 
-  -- ai tools
-  'zbirenbaum/copilot.lua',
-  {
-    'Exafunction/windsurf.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
-    },
-    setup = function()
-      vim.g.codeium_no_map_tab = true
-      require('windsurf').setup()
-    end,
-  },
-
   { 'akinsho/toggleterm.nvim', version = '*', config = true },
-
-  {
-    'catppuccin/nvim',
-    as = 'catppuccin',
-  },
-  'RRethy/base16-nvim',
-  'atelierbram/Base2Tone-nvim',
-  'xiyaowong/transparent.nvim',
 
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -345,6 +323,7 @@ require('lazy').setup({
 
   require 'plugins.lint',
   require 'plugins.ai',
+  require 'plugins.colors',
 }, {})
 
 require 'config.lsp'
