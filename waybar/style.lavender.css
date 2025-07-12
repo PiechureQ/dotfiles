@@ -9,13 +9,13 @@
 window#waybar {
     /* background: transparent; */
     background: linear-gradient(
-        to bottom,
+        to bottom, 
         rgba(0, 0, 0, 0.8) 0%,
         rgba(0, 0, 0, 0.3) 50%,
         rgba(0, 0, 0, 0) 100%
     );
-
-    color: #C5C9C7;
+    
+    color: #eed8e5;
 }
 
 tooltip {
@@ -23,7 +23,7 @@ tooltip {
   border: 1px solid rgba(100, 114, 125, 0.5);
 }
 tooltip label {
-  color: #8ba4b0;
+  color: #90758d;
 }
 
 #window {
@@ -38,12 +38,12 @@ tooltip label {
 #workspaces button {
     padding: 1 5px;
     background: transparent;
-    color: #C5C9C7;
+    color: #90758d;
 }
 
 #workspaces button.focused {
-    color: #8ba4b0;
-    border-top: 2px solid #8ba4b0;
+    color: #eed8e5;
+    border-top: 2px solid #eed8e5;
 }
 
 #mode {

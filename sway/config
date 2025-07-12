@@ -223,12 +223,11 @@ bindsym $mod+$alt+j exec playerctl previous
 bindsym $mod+$alt+l exec playerctl play-pause
 
 # Window
-default_border pixel 2 
+default_border pixel 2
 # Kolor obramowania aktywnych/nieaktywnych okien
-client.focused          #504850 #504850 #504850 #504850
-client.unfocused        #1c1621 #1c1621 #1c1621
-
-gaps top 10 
+client.focused          #393B44 #393B44 #393B44 #393B44
+client.unfocused        #090E13 #090E13 #090E13
+gaps top 10
 gaps inner 20
 
 #
