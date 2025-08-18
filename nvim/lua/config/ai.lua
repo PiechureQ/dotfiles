@@ -1,13 +1,14 @@
 local M = {}
+local TermTogglePlugin = {}
 
-function M.setup()
-  local gemini_term
+function TermTogglePlugin.setup(cmd)
+  local term_win
 
-  function _G.toggle_gemini()
-    if not gemini_term then
+  local function toggle()
+    if not term_win then
       local Terminal = require('toggleterm.terminal').Terminal
-      gemini_term = Terminal:new {
-        cmd = 'gemini',
+      term_win = Terminal:new {
+        cmd = cmd,
         dir = vim.fn.getcwd(),
         hidden = true,
         direction = 'vertical',
@@ -19,10 +20,18 @@ function M.setup()
         end,
       }
     end
-    gemini_term:toggle()
+    term_win:toggle()
   end
 
-  vim.api.nvim_set_keymap('n', '<leader>mp', '<cmd>lua _G.toggle_gemini()<CR>', { noremap = true, silent = true, desc = 'Toggle Gemini CLI' })
+  return toggle
+end
+
+function M.setup()
+  local term_gemini = TermTogglePlugin.setup 'gemini'
+  local term_opencode = TermTogglePlugin.setup 'opencode'
+
+  vim.keymap.set('n', '<leader>mg', term_gemini, { noremap = true, silent = true, desc = 'Toggle Gemini CLI' })
+  vim.keymap.set('n', '<leader>mp', term_opencode, { noremap = true, silent = true, desc = 'Toggle OpenCode AI CLI' })
 end
 
 return M
