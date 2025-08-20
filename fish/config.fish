@@ -30,7 +30,8 @@ if status is-interactive
 
     abbr -a npr npm run
     abbr -a nps npm start
-    abbr -a npi npm install
+    abbr -a npi npm i
+    abbr -a npmi npm i
 
     abbr -a g git
     abbr -a ga git add
@@ -98,6 +99,9 @@ if status is-interactive
     end
     alias clipp 'pbcopy'
 
+    alias curlj 'curl -H "Content-type: application/json"'
+    abbr -a xpost "-X POST"
+
     function r --description "Run previous command (excluding 'r' itself)"
         if test (count $argv) -eq 0
             # Znajdź ostatnie polecenie które nie jest 'r'
@@ -128,3 +132,6 @@ set --export PATH $BUN_INSTALL/bin $PATH
 #zig
 set --export ZIG_INSTALL "$HOME/.local/zig"
 set --export PATH $ZIG_INSTALL $PATH
+
+# opencode
+fish_add_path /home/xmichalx/.opencode/bin
