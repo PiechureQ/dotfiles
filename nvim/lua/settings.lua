@@ -2,8 +2,8 @@ local o = vim.o
 
 -- general
 o.mouse = 'a'
-o.number = true
-o.relativenumber = true
+o.number = false
+o.relativenumber = false
 o.signcolumn = 'auto'
 o.confirm = true
 o.completeopt = 'menuone,noselect'
@@ -46,7 +46,7 @@ o.smartindent = true
 o.backup = false
 o.swapfile = false
 o.undofile = true
-o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+o.undodir = os.getenv 'HOME' .. '/.vim/undodir'
 
 -- better buffer splitting
 o.splitright = true

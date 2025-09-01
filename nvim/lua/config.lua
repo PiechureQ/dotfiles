@@ -1,8 +1,8 @@
 local local_module = 'local'
 
 local config = {
-  copilot_provider = 'copilot',
-  avante = true,
+  copilot_provider = '',
+  avante = false,
 }
 
 local local_config_success, local_config = pcall(require, local_module)

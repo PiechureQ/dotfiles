@@ -1,4 +1,4 @@
-local lualine = require('lualine')
+local lualine = require 'lualine'
 local ll_mode = require('lualine.utils.mode').get_mode
 
 local mode_name = {
@@ -61,7 +61,7 @@ local filetype_inactive = {
 local diagnostics = {
   'diagnostics',
   symbols = { error = ' ', warn = ' ', info = ' ' },
-  sources = { 'nvim_diagnostic' }
+  sources = { 'nvim_diagnostic' },
 }
 
 local branch = {
@@ -72,7 +72,7 @@ local branch = {
 local tabs = {
   'tabs',
   max_length = vim.o.columns,
-  mode = 2,
+  mode = 1,
   fmt = function(name, context)
     -- get buffer edited
     local buflist = vim.fn.tabpagebuflist(context.tabnr)
@@ -88,7 +88,7 @@ local tabs = {
     -- end
 
     return name .. (mod == 1 and ' ~' or '') .. ' ' .. icon
-  end
+  end,
 }
 
 local function get_lsp_client_name()
@@ -134,6 +134,7 @@ local config = {
     lualine_a = {},
     lualine_b = { filename, filetype, mode_name },
     lualine_c = { 'diff', diagnostics },
+
     lualine_x = { 'searchcount', 'location', 'progress' },
     lualine_y = {},
     lualine_z = {},
