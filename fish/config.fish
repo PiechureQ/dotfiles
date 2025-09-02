@@ -57,6 +57,7 @@ if status is-interactive
         $EDITOR "$HOME/Dokumenty/todo/$argv[1]"
     end
 
+    abbr dsa docker stop (docker ps -q)
     abbr dockerc docker compose
     abbr dcompose docker compose
     abbr doco docker compose

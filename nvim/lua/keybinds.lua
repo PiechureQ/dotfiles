@@ -4,6 +4,9 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- vim.keymap.set("n", "q", "<Nop>", { silent = true })
 vim.keymap.set({ 'n', 'v' }, 'J', '<Nop>', { silent = true })
 
+-- execute lua line under the cursor
+vim.keymap.set('n', '<leader>=', '^y$:lua <C-R>"<cr>', { silent = true, desc = 'execute lua line under the cursor' })
+
 -- so current file
 vim.keymap.set('n', '<leader>so', ':source %<cr>', { silent = true, desc = 'source current config file' })
 
@@ -31,8 +34,9 @@ vim.keymap.set('i', '<c-s>', '<c-o>:w<cr>', { silent = true, desc = 'Write to bu
 --     end
 -- end, { desc = "Open netrw" })
 
--- delete word OS style
-vim.keymap.set('!', '<c-BS>', '<c-w>', {})
+-- delete mappings
+vim.keymap.set('i', '<C-y>', '<C-o>d$a', { desc = 'Delete all charactes after the cursor in the current line' })
+vim.keymap.set('i', '<C-x>', '<DEL>', { desc = 'Delete character under the cursor' })
 
 -- yank and paste
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Yank with system clipbord' })

@@ -329,6 +329,8 @@ require('lazy').setup({
 require 'config.lsp'
 require('config.ai').setup()
 
+require('plugins.closer').setup()
+
 vim.keymap.set('n', '<leader>gg', function()
   vim.cmd.Git()
   vim.cmd.call 'feedkeys("\\<C-w>L")'
