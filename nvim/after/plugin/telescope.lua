@@ -24,7 +24,9 @@ nmap('<leader>/', function()
   builtin.current_buffer_fuzzy_find(dropdown_theme)
 end, 'Fuzzily search in current buffer]')
 
-nmap('<leader>ff', builtin.live_grep, 'live grep')
+nmap('<leader>ff', function()
+  builtin.live_grep { max_results = 10 }
+end, 'live grep')
 nmap('<leader>fw', builtin.grep_string, 'find word under cursor')
 nmap('<leader>ft', builtin.git_status, 'git status')
 

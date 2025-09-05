@@ -136,3 +136,4 @@ set --export PATH $ZIG_INSTALL $PATH
 
 # opencode
 fish_add_path /home/xmichalx/.opencode/bin
+fish_add_path ~/flutter/flutter/bin
