@@ -57,7 +57,7 @@ if status is-interactive
         $EDITOR "$HOME/Dokumenty/todo/$argv[1]"
     end
 
-    abbr dsa docker stop (docker ps -q)
+    abbr -a dsa 'docker stop (docker ps -q)'
     abbr dockerc docker compose
     abbr dcompose docker compose
     abbr doco docker compose
@@ -101,8 +101,8 @@ if status is-interactive
     alias clipp 'pbcopy'
 
     alias curlj 'curl -H "Content-type: application/json"'
-    abbr -a xpost "-X POST"
 
+    # TODO add option to abbriviate to command insted of using it
     function r --description "Run previous command (excluding 'r' itself)"
         if test (count $argv) -eq 0
             # Znajdź ostatnie polecenie które nie jest 'r'

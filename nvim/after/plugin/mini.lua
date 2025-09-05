@@ -3,6 +3,7 @@ require('mini.ai').setup()
 require('mini.operators').setup()
 require('mini.splitjoin').setup()
 require('mini.surround').setup()
+-- require('mini.pairs').setup()
 require('mini.bracketed').setup {
   treesitter = { suffix = 'r', options = {} },
   undo = { suffix = '', options = {} },

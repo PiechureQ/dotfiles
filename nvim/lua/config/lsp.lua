@@ -30,6 +30,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('gs', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
     map('<leader>ds', telescope.lsp_document_symbols, '[D]ocument [S]ymbols')
+    map('<leader>df', function()
+      telescope.lsp_document_symbols { symbols = { 'function' } }
+    end, '[D]ocument [M]ethods')
+    map('<leader>dc', function()
+      telescope.lsp_document_symbols { symbols = { 'const' } }
+    end, '[D]ocument [C]onsts (vars)')
 
     map('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 

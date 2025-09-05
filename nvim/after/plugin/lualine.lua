@@ -1,9 +1,15 @@
 local lualine = require 'lualine'
 local ll_mode = require('lualine.utils.mode').get_mode
 
+-- mini.icons
+require('mini.icons').setup()
+
+-- mock nvim-web-devicons to use mini.icons instead
+require('mini.icons').mock_nvim_web_devicons()
+
 local mode_name = {
   function()
-    return string.lower(ll_mode()) .. ' '
+    return string.lower(ll_mode())
   end,
 }
 
@@ -112,6 +118,22 @@ local lsp_server = {
   icon = ' LSP:',
 }
 
+local trouble = require 'trouble'
+local symbols = trouble.statusline {
+  mode = 'lsp_document_symbols',
+  groups = {},
+  title = false,
+  filter = { range = true },
+  format = '{kind_icon}{symbol.name:Normal}',
+  -- The following line is needed to fix the background color
+  -- Set it to the lualine section you want to use
+  hl_group = 'lualine_c_normal',
+}
+local get_symbols = {
+  symbols.get,
+  cond = symbols.has,
+}
+
 -- Config
 local config = {
   options = {
@@ -131,8 +153,14 @@ local config = {
     lualine_z = {},
   },
   sections = {
-    lualine_a = {},
-    lualine_b = { filename, filetype, mode_name },
+    lualine_a = {
+      mode_name,
+    },
+    lualine_b = {
+      filename,
+      filetype,
+      get_symbols,
+    },
     lualine_c = { 'diff', diagnostics },
 
     lualine_x = { 'searchcount', 'location', 'progress' },
