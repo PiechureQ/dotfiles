@@ -26,7 +26,13 @@ if status is-interactive
     set -U fish_color_operator blue --bold
 
     alias q exit
+    alias bat batcat
     alias cat bat
+    set --export MANPAGER "sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | batcat -p -lman'"
+
+    function batdiff
+        git diff --name-only --relative --diff-filter=d -z | xargs -0 batcat --diff
+    end
 
     abbr -a npr npm run
     abbr -a nps npm start
