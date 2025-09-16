@@ -254,7 +254,7 @@ require('lazy').setup({
 require 'config.lsp'
 require('config.ai').setup()
 
-require('plugins.closer').setup()
+require('modules.convert').setup()
 
 vim.keymap.set('n', '<leader>gg', function()
   vim.cmd.Git()
