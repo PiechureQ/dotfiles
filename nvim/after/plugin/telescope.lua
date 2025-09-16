@@ -19,6 +19,9 @@ nmap('<leader>fi', builtin.find_files, 'Find files')
 nmap('<leader>fI', function()
   builtin.find_files { cwd = vim.fn.expand '%:h' }
 end, 'Find files (in current buf path)')
+nmap("<leader>f'", function()
+  builtin.marks { mark_type = 'local' }
+end, 'Find local marks')
 
 nmap('<leader>/', function()
   builtin.current_buffer_fuzzy_find(dropdown_theme)

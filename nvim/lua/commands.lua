@@ -1,4 +1,8 @@
 local A = vim.api
+
+A.nvim_create_user_command('Wa', vim.cmd 'wa', {})
+A.nvim_create_user_command('WA', vim.cmd 'wa', {})
+
 local function cmd_out(cmd)
   return vim.api.nvim_cmd(vim.api.nvim_parse_cmd(cmd, {}), { output = true })
 end

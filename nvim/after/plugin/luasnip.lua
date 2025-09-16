@@ -36,6 +36,11 @@ ls.add_snippets('typescriptreact', {
   s('TODO', fmt([[// {}: {}]], { c(1, { t 'TODO', t 'FIX' }), i(2) })),
 })
 
+ls.add_snippets('zig', {
+  s('cosnt', { t 'const' }, { enable_autosnippets }),
+  s('con', { t 'const' }),
+})
+
 vim.keymap.set({ 'i', 's' }, '<C-j>', function()
   if ls.expand_or_jumpable() then
     ls.expand_or_jump()
@@ -43,8 +48,8 @@ vim.keymap.set({ 'i', 's' }, '<C-j>', function()
 end, { silent = true })
 
 vim.keymap.set({ 'i', 's' }, '<C-k>', function()
-  if ls.jumpable(-1) then
-    ls.jump(-1)
+  if ls.expand_or_jumpable(-1) then
+    ls.expand_or_jump(-1)
   end
 end, { silent = true })
 

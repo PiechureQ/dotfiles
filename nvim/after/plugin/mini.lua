@@ -8,9 +8,10 @@ require('mini.bracketed').setup {
   treesitter = { suffix = 'r', options = {} },
   undo = { suffix = '', options = {} },
 }
-require('mini.jump2d').setup { mappings = {
-  start_jumping = '<C-F>',
-} }
+-- require('mini.jump2d').setup { mappings = {
+--   start_jumping = '<C-F>',
+-- } }
+require('mini.jump').setup()
 
 -- functional
 require('mini.files').setup()
