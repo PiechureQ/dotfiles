@@ -2,9 +2,8 @@ local telescope = require 'telescope'
 local builtin = require 'telescope.builtin'
 
 local default_layout_strategy = 'horizontal'
-local dropdown_theme = require('telescope.themes').get_dropdown {
-  prompt_position = 'top',
-  previewer = false,
+local ivy_theme = require('telescope.themes').get_ivy {
+  skip_empty_lines = true,
 }
 
 local nmap = function(key, action, desc)
@@ -24,7 +23,7 @@ nmap("<leader>f'", function()
 end, 'Find local marks')
 
 nmap('<leader>/', function()
-  builtin.current_buffer_fuzzy_find(dropdown_theme)
+  builtin.current_buffer_fuzzy_find(ivy_theme)
 end, 'Fuzzily search in current buffer]')
 
 nmap('<leader>ff', function()

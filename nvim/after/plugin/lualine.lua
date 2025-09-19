@@ -75,6 +75,12 @@ local branch = {
   icon = '',
 }
 
+local idk = {
+  function()
+    return ' ⛧'
+  end,
+}
+
 local tabs = {
   'tabs',
   max_length = vim.o.columns,
@@ -171,7 +177,7 @@ local config = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { tabs },
-    lualine_x = { branch },
+    lualine_x = { branch, idk },
     lualine_y = {},
     lualine_z = {},
   },

@@ -186,18 +186,5 @@ end
 if config.copilot_provider == 'copilot' then
   table.insert(AI, 'zbirenbaum/copilot.lua')
 end
-if config.copilot_provider == 'windsurf' then
-  table.insert(AI, {
-    'Exafunction/windsurf.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'hrsh7th/nvim-cmp',
-    },
-    setup = function()
-      vim.g.codeium_no_map_tab = true
-      require('windsurf').setup()
-    end,
-  })
-end
 
 return AI

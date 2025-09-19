@@ -129,6 +129,7 @@ if status is-interactive
             end
         end
     end
+    abbr rr r
 end
 
 # bun
