@@ -140,6 +140,10 @@ set --export PATH $BUN_INSTALL/bin $PATH
 set --export ZIG_INSTALL "$HOME/.local/zig"
 set --export PATH $ZIG_INSTALL $PATH
 
+#go
+set --export GO_INSTALL "$HOME/.local/go"
+set --export PATH "$GO_INSTALL/bin" $PATH
+
 # opencode
 fish_add_path /home/xmichalx/.opencode/bin
 fish_add_path ~/flutter/flutter/bin

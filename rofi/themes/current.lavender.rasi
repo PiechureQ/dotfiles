@@ -1,23 +1,25 @@
 /**
- * Blue colors
+ * A floating box version of the paper theme.
+ *
+ * User: Qball
+ * Copyright: Dave Davenport
  */
 
 * {
-    main: #C5C9C7;
-    secondary: rgba(139, 164, 176, 0.7);
-    selected: #090E13;
-    white: #090E13;
-    fg: #090E13;
-    black: #090E1300;
-    main-bg: #090E13a0;
-    bg: #090E1300;
-    bg2: @bg;
+    main: #c8a3bc;
+    selected: #c8a3bc;
+    secondary: #1c1621;
+    white: #eed8e5;
+    fg: #eed8e5;
+    black: #0c0611;
+    bg: #0c0611e5;
+    bg2: #0c061199;
     red: #e8a3b2;
     urgent: #f274bc;
 
     spacing: 2;
     background-color: #00000000;
-    border-color: rgba(197, 201, 199, 0.4);
+    border-color: #504850;
     anchor: north;
     location: center;
 }
@@ -52,7 +54,7 @@ listview {
     reverse: false;
 
     columns: 1;
-    background-color: @main-bg;
+    background-color: @bg;
 }
     
 element {
@@ -74,34 +76,34 @@ element normal.urgent {
     background-color: @bg2;
 }
 element normal.active {
-    text-color: @selected;
+    text-color: @bg;
     background-color: @fg;
 }
 
 element selected.normal {
-    text-color: @selected;
-    background-color: @secondary;
+    text-color: @bg;
+    background-color: @selected;
 }
 element selected.urgent {
-    text-color: @main;
+    text-color: @bg2;
     background-color: @urgent;
 }
 element selected.active {
-    text-color: @main;
-    background-color: @secondary;
+    text-color: @bg;
+    background-color: @selected;
 }
 
 element alternate.normal {
     text-color: @main;
-    background-color: @bg2;
+    background-color: @secondary;
 }
 element alternate.urgent {
     text-color: @main;
-    background-color: @bg2;
+    background-color: @secondary;
 }
 element alternate.active {
-    text-color: @main;
-    background-color: @bg2;
+    text-color: @bg;
+    background-color: @secondary;
 }
 
 scrollbar {
@@ -111,7 +113,7 @@ scrollbar {
 mode-switcher {
     border: 2px;
     padding: 0.5em 1em;
-    background-color: @main-bg;
+    background-color: @bg;
     index: 10;
 }
 button selected {
@@ -122,13 +124,13 @@ inputbar {
     spacing: 0;
     border: 2px;
     padding: 0.5em 1em;
-    background-color: @main-bg;
+    background-color: @bg;
     index: 0;
 }
 inputbar normal {
     color: @main;
     foreground-color: @main;
-    background-color: @main-bg;
+    background-color: @bg;
 }
 inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];

@@ -70,7 +70,7 @@ require('lazy').setup({
     -- See `:help indent_blankline.txt`
     opts = {
       debounce = 200,
-      indent = { char = '▏' },
+      indent = { char = '▏', tab_char = '┋' },
       whitespace = { highlight = { 'Whitespace', 'NonText' } },
       -- scope = { exclude = { language = { "lua" } } },
     },
