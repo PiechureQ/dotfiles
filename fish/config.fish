@@ -130,7 +130,10 @@ if status is-interactive
         end
     end
     abbr rr r
+    abbr qr r
 end
+
+fish_add_path /home/xmichalx/.local/bin
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
