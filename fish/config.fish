@@ -27,7 +27,7 @@ if status is-interactive
 
     alias q exit
     alias cat bat
-    set --export MANPAGER "sh -c 'awk '\''{ gsub(/\x1B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
+    set --export MANPAGER "sh -c 'awk '\''{ gsub(/\x2B\[[0-9;]*m/, \"\", \$0); gsub(/.\x08/, \"\", \$0); print }'\'' | bat -p -lman'"
 
     function batdiff
         git diff --name-only --relative --diff-filter=d -z | xargs -0 bat --diff
@@ -72,7 +72,7 @@ if status is-interactive
     abbr tx tmux
     abbr txa tmux attach
 
-    alias nv="nvim"
+    alias nv nvim
     abbr -a nvi neovide
     set -g -e EDITOR
     set -g EDITOR nvim
@@ -88,11 +88,6 @@ if status is-interactive
         source $HOME/.my.fish
     else
         touch $HOME/.my.fish
-    end
-    if test -e $HOME/.keys.fish
-        source $HOME/.keys.fish
-    else
-        touch $HOME/.keys.fish
     end
 
     set --export PATH .local/bin $PATH
@@ -112,7 +107,7 @@ if status is-interactive
         if test (count $argv) -eq 0
             # Znajdź ostatnie polecenie które nie jest 'r'
             set -l last_cmd (history | grep -v '^r$' | head -1)
-            
+
             if test -n "$last_cmd"
                 eval $last_cmd
             else
@@ -121,7 +116,7 @@ if status is-interactive
         else
             # Z argumentem - znajdź ostatnie polecenie zawierające argument (także pomijając 'r')
             set -l found_cmd (history | grep -v '^r$' | grep "$argv[1]" | head -1)
-            
+
             if test -n "$found_cmd"
                 eval $found_cmd
             else
@@ -133,7 +128,9 @@ if status is-interactive
     abbr qr r
 end
 
-fish_add_path /home/xmichalx/.local/bin
+fish_add_path ~/.local/bin
+fish_add_path ~/.fzf/bin
+fish_add_path ~/.opencode/bin
 
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
@@ -146,7 +143,3 @@ set --export PATH $ZIG_INSTALL $PATH
 #go
 set --export GO_INSTALL "$HOME/.local/go"
 set --export PATH "$GO_INSTALL/bin" $PATH
-
-# opencode
-fish_add_path /home/xmichalx/.opencode/bin
-fish_add_path ~/flutter/flutter/bin
