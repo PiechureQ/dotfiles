@@ -255,6 +255,7 @@ require 'config.lsp'
 require('config.ai').setup()
 
 require('modules.convert').setup()
+require('modules.element').setup()
 
 vim.keymap.set('n', '<leader>gg', function()
   vim.cmd.Git()

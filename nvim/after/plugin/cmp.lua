@@ -1,7 +1,7 @@
-local cmp = require("cmp")
-local luasnip = require("luasnip")
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
 
-cmp.setup({
+cmp.setup {
   enable = true,
   autocomplete = false,
   window = {
@@ -13,77 +13,78 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ["<C-d>"] = cmp.mapping.scroll_docs(4),
-    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-l>"] = function()
+  mapping = cmp.mapping.preset.insert {
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-l>'] = function()
       if cmp.visible() then
-        cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
+        cmp.confirm { select = true, behavior = cmp.ConfirmBehavior.Replace }
       else
         cmp.complete()
       end
     end,
-    ["<CR>"] = cmp.mapping({
+    ['<CR>'] = cmp.mapping {
       i = function(fallback)
         if cmp.visible() then
-          cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+          cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true }
         else
           fallback()
         end
       end,
-    }),
-    ['<M-s>'] = cmp.mapping.complete({
+    },
+    ['<M-s>'] = cmp.mapping.complete {
       config = {
         sources = {
-          { name = 'luasnip' }
-        }
-      }
-    })
-  }),
+          { name = 'luasnip' },
+        },
+      },
+    },
+  },
   -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
-  sources = cmp.config.sources({
-    { name = "nvim_lsp", priority = 200,    group_index = 5 },
-    { name = "nvim_lua", priority = 200,    group_index = 5 },
-    { name = "luasnip",  group_index = 4 },
-    { name = "emoji" },
-    { name = "buffer",   keyword_length = 3 },
-    { name = "npm",      keyword_length = 4 },
-  }),
+  sources = cmp.config.sources {
+    { name = 'nvim_lsp', priority = 200, group_index = 5 },
+    -- { name = "nvim_lua", priority = 200,    group_index = 5 },
+    { name = 'lazydev', group_index = 0 },
+    { name = 'luasnip', group_index = 4 },
+    { name = 'emoji' },
+    { name = 'buffer', keyword_length = 3 },
+    { name = 'npm', keyword_length = 4 },
+  },
   experimental = {
     -- ghost_text = true,
   },
-})
+}
 
 -- Set configuration for specific filetype.
-cmp.setup.filetype("gitcommit", {
+cmp.setup.filetype('gitcommit', {
   sources = cmp.config.sources({
-    { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
-    { name = "emoji" },
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    { name = 'emoji' },
   }, {
-    { name = "buffer" },
+    { name = 'buffer' },
   }),
 })
 
 -- `/` cmdline setup.
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline('/', {
   mapping = cmp.mapping.preset.cmdline(),
   view = {
-    entries = { name = "wildmenu", separator = " | " },
+    entries = { name = 'wildmenu', separator = ' | ' },
   },
   sources = {
-    { name = "buffer" },
+    { name = 'buffer' },
   },
 })
 
 -- `:` cmdline setup.
-cmp.setup.cmdline(":", {
+cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   completion = {
     autocomplete = false,
   },
   sources = cmp.config.sources({
-    { name = "path" },
+    { name = 'path' },
   }, {
-    { name = "cmdline" },
+    { name = 'cmdline' },
   }),
 })

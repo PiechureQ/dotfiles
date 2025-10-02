@@ -127,8 +127,6 @@ local servers = {
   },
 }
 
--- Setup neovim lua configuration
--- require('neodev').setup()
 require('typescript-tools').setup {
   on_attach = function(event)
     local map = function(keys, func, desc, mode)
