@@ -80,8 +80,8 @@
     "buttons-grid": {
       "actions": [
         {
-            "label": "󰕾",
-            "command": "pactl set-sink-mute \@DEFAULT_SINK@ toggle"
+          "label": " ",
+          "command": "swaync-client -t;flatpak run org.flameshot.Flameshot gui -r | wl-copy --type image/png"
         },
         {
             "label": "󰍬",

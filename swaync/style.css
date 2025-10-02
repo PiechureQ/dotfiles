@@ -246,8 +246,8 @@ scale slider {
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background-color: @button_bg;
   border-radius: 66px;
-  padding: 14px 28px;
-  min-width: 24px;
+  padding: 16px 32px;
+  min-width: 28px;
   min-height: 24px;
   color: @icon_secondary;
   transition: background-color 0.15s ease, color 0.15s ease;
