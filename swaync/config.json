@@ -80,7 +80,7 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": " ",
+          "label": "",
           "command": "swaync-client -t;flatpak run org.flameshot.Flameshot gui -r | wl-copy --type image/png"
         },
         {
