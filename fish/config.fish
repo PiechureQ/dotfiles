@@ -126,6 +126,13 @@ if status is-interactive
     end
     abbr rr r
     abbr qr r
+
+    alias git-cb "git branch --show-current"
+
+    function timegb --description "runs timew command for current git branch"
+        timew $argv[1] (git-cb)
+    end
+
 end
 
 fish_add_path ~/.local/bin
