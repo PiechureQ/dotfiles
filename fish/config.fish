@@ -99,6 +99,7 @@ if status is-interactive
         alias pbpaste='xclip -selection clipboard -o'
     end
     alias clipp 'pbcopy'
+    alias clippng 'sleep 2;flatpak run org.flameshot.Flameshot gui -r | clipp'
 
     alias curlj 'curl -H "Content-type: application/json"'
 
