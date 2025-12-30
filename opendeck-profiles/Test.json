@@ -1,0 +1,317 @@
+{
+  "keys": [
+    {
+      "action": {
+        "controllers": [
+          "Keypad"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/com.elgato.analogclock.sdPlugin/action/images/actionimage@2x.png",
+        "name": "Analog Clock",
+        "plugin": "com.elgato.analogclock.sdPlugin",
+        "property_inspector": "plugins/com.elgato.analogclock.sdPlugin/propertyinspector/index.html",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/com.elgato.analogclock.sdPlugin/action/images/image@2x.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": false,
+        "tooltip": "Show a nice analog clock",
+        "uuid": "com.elgato.analogclock.action",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.0.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "0.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "19:01:08",
+          "underline": false
+        }
+      ]
+    },
+    null,
+    null,
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+        "name": "OS",
+        "plugin": "me.amankhanna.oasystem.sdPlugin",
+        "property_inspector": "",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+            "name": "",
+            "show": true,
+            "size": 12,
+            "style": "Regular",
+            "text": "Unknown",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Displays operating system information",
+        "uuid": "me.amankhanna.oasystem.os",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.3.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+          "name": "",
+          "show": true,
+          "size": 12,
+          "style": "Regular",
+          "text": "Linux\n(Fedora\nLinux\n42)",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+        "name": "CPU",
+        "plugin": "me.amankhanna.oasystem.sdPlugin",
+        "property_inspector": "",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "0%",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Displays average CPU utilisation",
+        "uuid": "me.amankhanna.oasystem.cpu",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.4.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "49%",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+        "name": "RAM",
+        "plugin": "me.amankhanna.oasystem.sdPlugin",
+        "property_inspector": "",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+            "name": "",
+            "show": true,
+            "size": 14,
+            "style": "Regular",
+            "text": "0GB",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Displays RAM utilisation",
+        "uuid": "me.amankhanna.oasystem.ram",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.5.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+          "name": "",
+          "show": true,
+          "size": 14,
+          "style": "Regular",
+          "text": "6.7GB",
+          "underline": false
+        }
+      ]
+    },
+    null,
+    null,
+    null
+  ],
+  "sliders": [
+    null,
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+        "name": "Run Command",
+        "plugin": "com.amansprojects.starterpack.sdPlugin",
+        "property_inspector": "plugins/com.amansprojects.starterpack.sdPlugin/propertyInspector/runCommand.html",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Run a command",
+        "uuid": "com.amansprojects.starterpack.runcommand",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Encoder.1.0",
+      "current_state": 0,
+      "settings": {
+        "down": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "file": "",
+        "rotate": "pactl set-sink-volume @DEFAULT_SINK@ +%d%",
+        "show": false,
+        "up": ""
+      },
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+        "name": "Run Command",
+        "plugin": "com.amansprojects.starterpack.sdPlugin",
+        "property_inspector": "plugins/com.amansprojects.starterpack.sdPlugin/propertyInspector/runCommand.html",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Run a command",
+        "uuid": "com.amansprojects.starterpack.runcommand",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Encoder.2.0",
+      "current_state": 0,
+      "settings": {
+        "down": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "file": "",
+        "rotate": "pactl set-source-volume @DEFAULT_SOURCE@ +%d%",
+        "show": false,
+        "up": ""
+      },
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "",
+          "underline": false
+        }
+      ]
+    }
+  ]
+}

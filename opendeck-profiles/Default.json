@@ -1,0 +1,316 @@
+{
+  "keys": [
+    {
+      "action": {
+        "controllers": [
+          "Keypad"
+        ],
+        "disable_automatic_states": false,
+        "icon": "opendeck/multi-action.png",
+        "name": "Multi Action",
+        "plugin": "opendeck",
+        "property_inspector": "",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "opendeck/multi-action.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": false,
+        "tooltip": "Execute multiple actions",
+        "uuid": "opendeck.multiaction",
+        "visible_in_action_list": true
+      },
+      "children": [],
+      "context": "Keypad.0.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "opendeck/multi-action.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+        "name": "Run Command",
+        "plugin": "com.amansprojects.starterpack.sdPlugin",
+        "property_inspector": "plugins/com.amansprojects.starterpack.sdPlugin/propertyInspector/runCommand.html",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Run a command",
+        "uuid": "com.amansprojects.starterpack.runcommand",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.1.0",
+      "current_state": 0,
+      "settings": {
+        "down": "",
+        "file": "",
+        "rotate": "",
+        "show": false,
+        "up": ""
+      },
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/runCommand.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/com.amansprojects.starterpack.sdPlugin/icons/inputSimulation.png",
+        "name": "Input Simulation",
+        "plugin": "com.amansprojects.starterpack.sdPlugin",
+        "property_inspector": "plugins/com.amansprojects.starterpack.sdPlugin/propertyInspector/inputSimulation.html",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/inputSimulation.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Simulate mouse or keyboard input",
+        "uuid": "com.amansprojects.starterpack.inputsimulation",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.2.0",
+      "current_state": 0,
+      "settings": {
+        "anticlockwise": "",
+        "clockwise": "",
+        "down": "[Key(Super,Press),Key(Unicode('l')),Key(Super,Release)]",
+        "up": ""
+      },
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/com.amansprojects.starterpack.sdPlugin/icons/inputSimulation.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+        "name": "OS",
+        "plugin": "me.amankhanna.oasystem.sdPlugin",
+        "property_inspector": "",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+            "name": "",
+            "show": true,
+            "size": 12,
+            "style": "Regular",
+            "text": "Unknown",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Displays operating system information",
+        "uuid": "me.amankhanna.oasystem.os",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.3.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+          "name": "",
+          "show": true,
+          "size": 12,
+          "style": "Regular",
+          "text": "Linux\n(Fedora\nLinux\n42)",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+        "name": "CPU",
+        "plugin": "me.amankhanna.oasystem.sdPlugin",
+        "property_inspector": "",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+            "name": "",
+            "show": true,
+            "size": 16,
+            "style": "Regular",
+            "text": "0%",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Displays average CPU utilisation",
+        "uuid": "me.amankhanna.oasystem.cpu",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.4.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+          "name": "",
+          "show": true,
+          "size": 16,
+          "style": "Regular",
+          "text": "36%",
+          "underline": false
+        }
+      ]
+    },
+    {
+      "action": {
+        "controllers": [
+          "Keypad",
+          "Encoder"
+        ],
+        "disable_automatic_states": false,
+        "icon": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+        "name": "RAM",
+        "plugin": "me.amankhanna.oasystem.sdPlugin",
+        "property_inspector": "",
+        "states": [
+          {
+            "alignment": "middle",
+            "colour": "#FFFFFF",
+            "family": "Liberation Sans",
+            "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+            "name": "",
+            "show": true,
+            "size": 14,
+            "style": "Regular",
+            "text": "0GB",
+            "underline": false
+          }
+        ],
+        "supported_in_multi_actions": true,
+        "tooltip": "Displays RAM utilisation",
+        "uuid": "me.amankhanna.oasystem.ram",
+        "visible_in_action_list": true
+      },
+      "children": null,
+      "context": "Keypad.5.0",
+      "current_state": 0,
+      "settings": {},
+      "states": [
+        {
+          "alignment": "middle",
+          "colour": "#FFFFFF",
+          "family": "Liberation Sans",
+          "image": "plugins/me.amankhanna.oasystem.sdPlugin/icon.png",
+          "name": "",
+          "show": true,
+          "size": 14,
+          "style": "Regular",
+          "text": "6.0GB",
+          "underline": false
+        }
+      ]
+    },
+    null,
+    null,
+    null
+  ],
+  "sliders": [
+    null,
+    null,
+    null
+  ]
+}
