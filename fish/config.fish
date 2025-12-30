@@ -99,6 +99,7 @@ if status is-interactive
         alias pbpaste='xclip -selection clipboard -o'
     end
     alias clipp 'pbcopy'
+    alias clippng 'sleep 2;flatpak run org.flameshot.Flameshot gui -r | clipp'
 
     alias curlj 'curl -H "Content-type: application/json"'
 
@@ -126,6 +127,13 @@ if status is-interactive
     end
     abbr rr r
     abbr qr r
+
+    alias git-cb "git branch --show-current"
+
+    function timegb --description "runs timew command for current git branch"
+        timew $argv[1] (git-cb)
+    end
+
 end
 
 fish_add_path ~/.local/bin

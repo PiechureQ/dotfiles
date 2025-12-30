@@ -319,6 +319,9 @@ scale slider {
   border-radius: 8px; /* <<< THIS LINE controls the rounding */
 }
 /* ── 8. Floating Notifications ─────────────────────────────────── */
+.floating-notifications .notification-row:first-child {
+  padding-top: 30px;
+}
 .floating-notifications .notification-row {
   margin-bottom: 12px;
 }
@@ -327,7 +330,7 @@ scale slider {
   border: 1px solid @border_light;
   border-radius: 18px;
   padding: 18px;
-  margin: 40px;
+  margin: 10px;
   transition: background-color 0.15s ease;
 }
 .floating-notifications .notification-row:hover .notification-background {
