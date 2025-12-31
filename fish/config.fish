@@ -72,6 +72,9 @@ if status is-interactive
     abbr tx tmux
     abbr txa tmux attach
 
+    abbr tb toolbox
+    abbr tbe toolbox enter
+
     alias nv nvim
     abbr -a nvi neovide
     set -g -e EDITOR
@@ -151,3 +154,6 @@ set --export PATH $ZIG_INSTALL $PATH
 #go
 set --export GO_INSTALL "$HOME/.local/go"
 set --export PATH "$GO_INSTALL/bin" $PATH
+
+# opencode
+fish_add_path /var/home/michalbb/.opencode/bin
