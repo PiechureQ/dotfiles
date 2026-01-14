@@ -295,4 +295,6 @@ exec swayidle -w \
          resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c 000000'
 
+exec "flatpak run me.amankhanna.opendeck & sleep 1; flatpak kill me.amankhanna.opendeck"
+
 include /etc/sway/config.d/*
