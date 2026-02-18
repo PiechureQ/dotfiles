@@ -38,7 +38,9 @@ set $menu rofi -show
 set $out-main eDP-1
 set $out-hdmi HDMI-A-1
 
-output * bg ~/Obrazy/bg.jpg fill
+# output * bg ~/Obrazy/bg.jpg fill
+output $out-main bg ~/Obrazy/bg-main.jpg fill
+output $out-hdmi bg ~/Obrazy/bg.jpg fill
 
 # output * scale 1.25
 #
@@ -295,6 +297,7 @@ exec swayidle -w \
          resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c 000000'
 
-exec "flatpak run me.amankhanna.opendeck & sleep 3; flatpak kill me.amankhanna.opendeck"
+# exec "flatpak run me.amankhanna.opendeck & sleep 3; flatpak kill me.amankhanna.opendeck"
+exec "flatpak run me.amankhanna.opendeck"
 
 include /etc/sway/config.d/*
