@@ -2,8 +2,8 @@ local o = vim.o
 
 -- general
 o.mouse = 'a'
-o.number = false
-o.relativenumber = false
+o.number = true
+o.relativenumber = true
 o.signcolumn = 'auto'
 o.confirm = true
 o.completeopt = 'menuone,noselect'
@@ -57,12 +57,9 @@ o.textwidth = 120
 o.hlsearch = true
 o.incsearch = true
 
--- NETRW
-vim.g.netrw_banner = 0
-vim.g.netrw_browse_spit = 2
-vim.g.netrw_liststyle = 3
-
 o.termguicolors = true
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+-- vim.g.have_nerd_font = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

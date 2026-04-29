@@ -1,5 +1,4 @@
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
 
 cmp.setup {
   enable = true,
@@ -7,11 +6,6 @@ cmp.setup {
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
-  },
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
   },
   mapping = cmp.mapping.preset.insert {
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
@@ -32,20 +26,12 @@ cmp.setup {
         end
       end,
     },
-    ['<M-s>'] = cmp.mapping.complete {
-      config = {
-        sources = {
-          { name = 'luasnip' },
-        },
-      },
-    },
   },
   -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
   sources = cmp.config.sources {
-    { name = 'nvim_lsp', priority = 200, group_index = 5 },
+    -- { name = 'nvim_lsp', priority = 200, group_index = 5 },
     -- { name = "nvim_lua", priority = 200,    group_index = 5 },
     { name = 'lazydev', group_index = 0 },
-    { name = 'luasnip', group_index = 4 },
     { name = 'emoji' },
     { name = 'buffer', keyword_length = 3 },
     { name = 'npm', keyword_length = 4 },
