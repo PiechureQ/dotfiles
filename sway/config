@@ -283,6 +283,7 @@ exec waybar
 # notifications center
 exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
+bindsym $mod+Shift+b exec swaync-client --close-all
 # polkit
 exec --no-startup-id lxpolkit
 
